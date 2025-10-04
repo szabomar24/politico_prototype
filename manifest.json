@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "GroundNews Prototype Overlay",
+  "version": "0.1.0",
+  "description": "Injects a prototype UI on ground.news for demo purposes (uses mock data).",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://ground.news/*"],
+      "js": ["content.js"],
+      "css": ["content.css", "politics.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["politics.js", "politics.css"],
+      "matches": ["https://ground.news/*"]
+    }
+  ]
+}

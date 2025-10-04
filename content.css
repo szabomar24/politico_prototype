@@ -1,0 +1,25 @@
+#gn-proto-btn {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 999999;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  }
+  #gn-proto-modal { display:none; position:fixed; inset:0; z-index:999998; }
+  .gn-proto-panel {
+    position: absolute;
+    right: 18px;
+    bottom: 70px;
+    width: 360px;
+    max-height: 70vh;
+    overflow:auto;
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.16);
+  }
+  #gn-proto-close { float:right; background:transparent; border:0; font-size:20px; cursor:pointer; }  
