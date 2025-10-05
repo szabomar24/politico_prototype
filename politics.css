@@ -752,20 +752,66 @@
 .coverage-meter {
   display: flex;
   align-items: center;
+  margin: 12px 0;
 }
 
-.meter-bar {
+.meter-container {
   height: 8px;
-  background-color: #3b82f6;
+  background-color: #e5e7eb;
   border-radius: 9999px;
   margin-right: 8px;
   flex-grow: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.meter-left {
+  height: 100%;
+  background-color: #ef4444; /* Red for left */
+}
+
+.meter-center {
+  height: 100%;
+  background-color: #ffffff; /* White for center */
+  border-left: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+}
+
+.meter-right {
+  height: 100%;
+  background-color: #3b82f6; /* Blue for right */
 }
 
 .coverage-meter span {
   font-size: 12px;
   color: #6b7280;
   white-space: nowrap;
+  font-weight: 500;
+}
+
+.coverage-meter .left-text {
+  color: #ef4444;
+}
+
+.coverage-meter .center-text {
+  color: #6b7280;
+}
+
+.coverage-meter .right-text {
+  color: #3b82f6;
+}
+
+/* Dark mode adjustments for coverage meter */
+@media (prefers-color-scheme: dark) {
+  .meter-container {
+    background-color: #374151;
+  }
+  
+  .meter-center {
+    background-color: #d1d5db;
+    border-left: 1px solid #374151;
+    border-right: 1px solid #374151;
+  }
 }
 
 /* Dark mode support */

@@ -420,8 +420,12 @@
             <h2>Supreme Court Rules on Major Election Law Case</h2>
             <p>The Supreme Court issued a landmark ruling today that will have significant implications for upcoming elections across the country...</p>
             <div class="coverage-meter">
-              <div class="meter-bar" style="width: 85%"></div>
-              <span>85% Coverage</span>
+              <div class="meter-container">
+                <div class="meter-left" style="width: 25%"></div>
+                <div class="meter-center" style="width: 30%"></div>
+                <div class="meter-right" style="width: 45%"></div>
+              </div>
+              <span class="right-text">45% Right Coverage</span>
             </div>
             <div class="story-footer">
               <div class="sources">
@@ -443,8 +447,12 @@
               <h3>New Major Healthcare Bill Advances in Senate</h3>
               <p>The controversial healthcare bill has advanced to the next stage after a narrow vote...</p>
               <div class="coverage-meter">
-                <div class="meter-bar" style="width: 65%"></div>
-                <span>65% Coverage</span>
+                <div class="meter-container">
+                  <div class="meter-left" style="width: 65%"></div>
+                  <div class="meter-center" style="width: 20%"></div>
+                  <div class="meter-right" style="width: 15%"></div>
+                </div>
+                <span class="left-text">65% Left Coverage</span>
               </div>
               <div class="story-footer">
                 <div class="sources">8 sources</div>
@@ -463,8 +471,12 @@
               <h3>Trade Agreement with European Union Finalized</h3>
               <p>After months of negotiations, the new trade agreement has been finalized...</p>
               <div class="coverage-meter">
-                <div class="meter-bar" style="width: 72%"></div>
-                <span>72% Coverage</span>
+                <div class="meter-container">
+                  <div class="meter-left" style="width: 15%"></div>
+                  <div class="meter-center" style="width: 13%"></div>
+                  <div class="meter-right" style="width: 72%"></div>
+                </div>
+                <span class="right-text">72% Right Coverage</span>
               </div>
               <div class="story-footer">
                 <div class="sources">10 sources</div>
@@ -483,8 +495,12 @@
               <h3>Presidential Debate Ratings Hit Record High</h3>
               <p>Last night's presidential debate drew the highest viewership in history...</p>
               <div class="coverage-meter">
-                <div class="meter-bar" style="width: 90%"></div>
-                <span>90% Coverage</span>
+                <div class="meter-container">
+                  <div class="meter-left" style="width: 20%"></div>
+                  <div class="meter-center" style="width: 50%"></div>
+                  <div class="meter-right" style="width: 30%"></div>
+                </div>
+                <span class="center-text">50% Center Coverage</span>
               </div>
               <div class="story-footer">
                 <div class="sources">15 sources</div>
@@ -846,15 +862,23 @@
                 <div class="stat">
                   <span class="stat-label">Media Coverage</span>
                   <div class="coverage-meter">
-                    <div class="meter-bar" style="width: 85%"></div>
-                    <span>85%</span>
+                    <div class="meter-container">
+                      <div class="meter-left" style="width: 40%"></div>
+                      <div class="meter-center" style="width: 25%"></div>
+                      <div class="meter-right" style="width: 35%"></div>
+                    </div>
+                    <span class="left-text">40% Left Coverage</span>
                   </div>
                 </div>
                 <div class="stat">
                   <span class="stat-label">Public Interest</span>
                   <div class="coverage-meter">
-                    <div class="meter-bar" style="width: 92%"></div>
-                    <span>92%</span>
+                    <div class="meter-container">
+                      <div class="meter-left" style="width: 35%"></div>
+                      <div class="meter-center" style="width: 15%"></div>
+                      <div class="meter-right" style="width: 50%"></div>
+                    </div>
+                    <span class="right-text">50% Right Interest</span>
                   </div>
                 </div>
               </div>
@@ -893,15 +917,23 @@
                 <div class="stat">
                   <span class="stat-label">Media Coverage</span>
                   <div class="coverage-meter">
-                    <div class="meter-bar" style="width: 72%"></div>
-                    <span>72%</span>
+                    <div class="meter-container">
+                      <div class="meter-left" style="width: 25%"></div>
+                      <div class="meter-center" style="width: 45%"></div>
+                      <div class="meter-right" style="width: 30%"></div>
+                    </div>
+                    <span class="center-text">45% Center Coverage</span>
                   </div>
                 </div>
                 <div class="stat">
                   <span class="stat-label">Public Interest</span>
                   <div class="coverage-meter">
-                    <div class="meter-bar" style="width: 68%"></div>
-                    <span>68%</span>
+                    <div class="meter-container">
+                      <div class="meter-left" style="width: 68%"></div>
+                      <div class="meter-center" style="width: 20%"></div>
+                      <div class="meter-right" style="width: 12%"></div>
+                    </div>
+                    <span class="left-text">68% Left Interest</span>
                   </div>
                 </div>
               </div>
@@ -940,15 +972,23 @@
                 <div class="stat">
                   <span class="stat-label">Media Coverage</span>
                   <div class="coverage-meter">
-                    <div class="meter-bar" style="width: 65%"></div>
-                    <span>65%</span>
+                    <div class="meter-container">
+                      <div class="meter-left" style="width: 20%"></div>
+                      <div class="meter-center" style="width: 15%"></div>
+                      <div class="meter-right" style="width: 65%"></div>
+                    </div>
+                    <span class="right-text">65% Right Coverage</span>
                   </div>
                 </div>
                 <div class="stat">
                   <span class="stat-label">Public Interest</span>
                   <div class="coverage-meter">
-                    <div class="meter-bar" style="width: 58%"></div>
-                    <span>58%</span>
+                    <div class="meter-container">
+                      <div class="meter-left" style="width: 22%"></div>
+                      <div class="meter-center" style="width: 58%"></div>
+                      <div class="meter-right" style="width: 20%"></div>
+                    </div>
+                    <span class="center-text">58% Center Interest</span>
                   </div>
                 </div>
               </div>
