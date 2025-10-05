@@ -147,6 +147,7 @@
 @media (min-width: 768px) {
   .featured-story {
     flex-direction: row;
+    align-items: stretch; /* Ensure children stretch to full height */
   }
 }
 
@@ -168,6 +169,9 @@
 
 .featured-story .story-details {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .story-meta {
