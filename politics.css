@@ -32,7 +32,11 @@
   font-weight: 500;
 }
 
-.filter-btn {
+/* Only apply this styling to filter buttons in content areas, not in the header */
+.politics-actions .filter-btn,
+.events-filters .filter-btn,
+.politicians-filters .filter-btn,
+.issues-filters .filter-btn {
   background-color: #3b82f6;
   color: white;
   border: none;
@@ -82,20 +86,22 @@
   gap: 12px;
 }
 
-.change-location-btn {
+.change-location-btn,
+.location-actions .filter-btn {
   padding: 8px 16px;
   background-color: transparent;
   border: 1px solid #d1d5db;
   border-radius: 4px;
   cursor: pointer;
+  color: inherit;
+  font-size: 14px;
 }
 
-.location-tabs {
+/* .location-tabs {
   display: flex;
   border-bottom: 1px solid #e5e7eb;
   margin-bottom: 24px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
 }
 
 .tab-btn {
@@ -106,6 +112,25 @@
   cursor: pointer;
   position: relative;
   white-space: nowrap;
+} */
+
+/* Replace the current .location-tabs and .tab-btn styles with these */
+.location-tabs {
+    display: flex;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 24px;
+    width: 100%;
+}
+  
+.tab-btn {
+    flex: 1;
+    padding: 12px 8px;
+    background-color: transparent;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
 }
 
 .tab-btn.active {
