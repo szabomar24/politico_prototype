@@ -813,13 +813,13 @@
     const avifSupported = await checkAvifSupport();
     
     // Get URLs for all politician images
-    const markRutteImgUrl = getExtensionResourceUrl('media/mark_rutte.jpeg');
+    const dickSchoofImgUrl = getExtensionResourceUrl('media/dick_schoof.jpg');
     const sigridKaagImgUrl = getExtensionResourceUrl('media/sigrid_kaag.png');
     const jesseKlaverImgUrl = getExtensionResourceUrl('media/jesse_klaver.jpg');
     
     // Debug log the image URLs
     log('Image URLs:');
-    log('- Mark Rutte:', markRutteImgUrl);
+    log('- Dick Schoof:', dickSchoofImgUrl);
     log('- Sigrid Kaag:', sigridKaagImgUrl);
     log('- Jesse Klaver:', jesseKlaverImgUrl);
     
@@ -838,9 +838,9 @@
     
     // Try to preload all images
     try {
-      const [markRutteImg, sigridKaagImg, jesseKlaverImg, geertWildersImg, wopkeHoekstraImg, lilianMarijnissenImg] = 
+      const [dickSchoofImg, sigridKaagImg, jesseKlaverImg, geertWildersImg, wopkeHoekstraImg, lilianMarijnissenImg] = 
         await Promise.all([
-          preloadImage(markRutteImgUrl).catch(() => 'https://via.placeholder.com/300x300/3b82f6/ffffff?text=Mark+Rutte'),
+          preloadImage(dickSchoofImgUrl).catch(() => 'https://via.placeholder.com/300x300/3b82f6/ffffff?text=Dick+Schoof'),
           preloadImage(sigridKaagImgUrl).catch(() => 'https://via.placeholder.com/300x300/3b82f6/ffffff?text=Sigrid+Kaag'),
           preloadImage(jesseKlaverImgUrl).catch(() => 'https://via.placeholder.com/300x300/ef4444/ffffff?text=Jesse+Klaver'),
           preloadImage(geertWildersImgUrl).catch(() => 'https://via.placeholder.com/300x300/ef4444/ffffff?text=Geert+Wilders'),
@@ -863,19 +863,19 @@
         
         <div class="politicians-grid">
           <div class="politician-card">
-            <img src="${markRutteImg}" alt="Mark Rutte" class="politician-image">
+            <img src="${dickSchoofImg}" alt="Dick Schoof" class="politician-image">
             <div class="politician-details">
-              <h3>Mark Rutte</h3>
+              <h3>Dick Schoof</h3>
               <p class="politician-position">Prime Minister</p>
               <p class="politician-party">VVD (People's Party for Freedom and Democracy)</p>
               <div class="politician-stats">
                 <div class="stat">
                   <span class="stat-label">In Office Since</span>
-                  <span class="stat-value">2010</span>
+                  <span class="stat-value">2024</span>
                 </div>
                 <div class="stat">
                   <span class="stat-label">Approval</span>
-                  <span class="stat-value">54%</span>
+                  <span class="stat-value">62%</span>
                 </div>
               </div>
               <div class="politician-bias">
@@ -1047,7 +1047,7 @@
         
         <div class="politicians-grid">
           <div class="politician-card">
-            <img src="https://via.placeholder.com/300x300/3b82f6/ffffff?text=Mark+Rutte" alt="Mark Rutte" class="politician-image">
+            <img src="https://via.placeholder.com/300x300/3b82f6/ffffff?text=Dick+Schoof" alt="Dick Schoof" class="politician-image">
             <!-- Rest of the politician cards with placeholder images -->
           </div>
           <!-- Add more placeholder cards as needed -->
