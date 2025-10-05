@@ -356,7 +356,7 @@
           button.classList.add('active');
         }
         
-        button.addEventListener('click', () => {
+        button.addEventListener('click', async () => {
           // Update active tab
           tabButtons.forEach(btn => btn.classList.remove('active'));
           button.classList.add('active');
@@ -364,18 +364,28 @@
           // Store the active tab
           window.__gn_politics_active_tab = tabName;
           
-          // Load the tab content
-          loadTabContent(tabName, displayLocation);
+          // Load the tab content (async)
+          try {
+            await loadTabContent(tabName, displayLocation);
+          } catch (error) {
+            logError(`Error loading ${tabName} tab: ${error.message}`);
+          }
         });
       });
       
       // Load the default tab content (News)
-      loadTabContent(window.__gn_politics_active_tab, displayLocation);
+      (async () => {
+        try {
+          await loadTabContent(window.__gn_politics_active_tab, displayLocation);
+        } catch (error) {
+          logError(`Error loading initial tab: ${error.message}`);
+        }
+      })();
     }, 100);
   }
   
   // Function to load the content for a specific tab
-  function loadTabContent(tabName, location) {
+  async function loadTabContent(tabName, location) {
     log(`Loading ${tabName} tab content for ${location}`);
     
     const contentContainer = document.querySelector('.politics-location-content');
@@ -387,22 +397,31 @@
     // Clear existing content
     contentContainer.innerHTML = '';
     
-    // Load content based on tab name
-    switch(tabName) {
-      case 'News':
-        loadNewsTabContent(contentContainer, location);
-        break;
-      case 'Events':
-        loadEventsTabContent(contentContainer, location);
-        break;
-      case 'Politicians':
-        loadPoliticiansTabContent(contentContainer, location);
-        break;
-      case 'Issues':
-        loadIssuesTabContent(contentContainer, location);
-        break;
-      default:
-        loadNewsTabContent(contentContainer, location);
+    // Show loading indicator
+    contentContainer.innerHTML = '<div class="loading-indicator">Loading content...</div>';
+    
+    try {
+      // Load content based on tab name
+      switch(tabName) {
+        case 'News':
+          loadNewsTabContent(contentContainer, location);
+          break;
+        case 'Events':
+          loadEventsTabContent(contentContainer, location);
+          break;
+        case 'Politicians':
+          // Handle async loading for Politicians tab
+          await loadPoliticiansTabContent(contentContainer, location);
+          break;
+        case 'Issues':
+          loadIssuesTabContent(contentContainer, location);
+          break;
+        default:
+          loadNewsTabContent(contentContainer, location);
+      }
+    } catch (error) {
+      logError(`Error loading ${tabName} tab: ${error.message}`);
+      contentContainer.innerHTML = `<div class="error-message">Error loading content. Please try again.</div>`;
     }
   }
   
@@ -654,9 +673,124 @@
     `;
   }
   
+  // Function to preload an image and check if it can be loaded
+  function preloadImage(src) {
+    return new Promise((resolve, reject) => {
+      try {
+        // Create a new image element
+        const img = new Image();
+        
+        // Set a timeout to prevent hanging on slow image loads
+        const timeout = setTimeout(() => {
+          log(`Image load timeout for: ${src}`);
+          resolve('https://via.placeholder.com/300x300/cccccc/666666?text=Image+Timeout');
+        }, 5000); // 5 second timeout
+        
+        // Set up event handlers
+        img.onload = () => {
+          clearTimeout(timeout);
+          log(`Successfully loaded image: ${src}`);
+          resolve(src);
+        };
+        
+        img.onerror = () => {
+          clearTimeout(timeout);
+          log(`Failed to load image: ${src}`);
+          resolve('https://via.placeholder.com/300x300/cccccc/666666?text=Image+Error');
+        };
+        
+        // Start loading the image
+        img.src = src;
+      } catch (error) {
+        log(`Error in preloadImage: ${error.message}`);
+        resolve('https://via.placeholder.com/300x300/cccccc/666666?text=Image+Error');
+      }
+    });
+  }
+  
+  // Function to check if browser supports AVIF format
+  function checkAvifSupport() {
+    // Create a test image element
+    const img = new Image();
+    
+    // Set up event handlers
+    return new Promise((resolve) => {
+      img.onload = function() {
+        // If image loads, AVIF is supported
+        resolve(true);
+      };
+      
+      img.onerror = function() {
+        // If error occurs, AVIF is not supported
+        resolve(false);
+      };
+      
+      // Use a data URL with AVIF signature
+      img.src = 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK';
+    });
+  }
+  
+  // Function to get the extension's base URL for resources
+  function getExtensionResourceUrl(resourcePath) {
+    // For Chrome extensions
+    if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.getURL) {
+      return chrome.runtime.getURL(resourcePath);
+    }
+    
+    // For Firefox extensions
+    if (typeof browser !== 'undefined' && browser.runtime && browser.runtime.getURL) {
+      return browser.runtime.getURL(resourcePath);
+    }
+    
+    // Fallback to relative path if not in extension context
+    return resourcePath;
+  }
+  
   // Function to load the Politicians tab content
-  function loadPoliticiansTabContent(container, location) {
-    container.innerHTML = `
+  async function loadPoliticiansTabContent(container, location) {
+    // Check if browser supports AVIF format
+    const avifSupported = await checkAvifSupport();
+    
+    // Get URLs for all politician images
+    const markRutteImgUrl = getExtensionResourceUrl('media/mark_rutte.jpeg');
+    const sigridKaagImgUrl = getExtensionResourceUrl('media/sigrid_kaag.png');
+    const jesseKlaverImgUrl = getExtensionResourceUrl('media/jesse_klaver.jpg');
+    
+    // Debug log the image URLs
+    log('Image URLs:');
+    log('- Mark Rutte:', markRutteImgUrl);
+    log('- Sigrid Kaag:', sigridKaagImgUrl);
+    log('- Jesse Klaver:', jesseKlaverImgUrl);
+    
+    // Get URLs for AVIF images with fallbacks
+    const geertWildersImgUrl = avifSupported ? 
+      getExtensionResourceUrl('media/geert_wilders.avif') : 
+      'https://via.placeholder.com/300x300/ef4444/ffffff?text=Geert+Wilders';
+      
+    const wopkeHoekstraImgUrl = avifSupported ? 
+      getExtensionResourceUrl('media/wopke_hoekstra.avif') : 
+      'https://via.placeholder.com/300x300/3b82f6/ffffff?text=Wopke+Hoekstra';
+      
+    const lilianMarijnissenImgUrl = avifSupported ? 
+      getExtensionResourceUrl('media/lilian_marijnissen.avif') : 
+      'https://via.placeholder.com/300x300/ef4444/ffffff?text=Lilian+Marijnissen';
+    
+    // Try to preload all images
+    try {
+      const [markRutteImg, sigridKaagImg, jesseKlaverImg, geertWildersImg, wopkeHoekstraImg, lilianMarijnissenImg] = 
+        await Promise.all([
+          preloadImage(markRutteImgUrl).catch(() => 'https://via.placeholder.com/300x300/3b82f6/ffffff?text=Mark+Rutte'),
+          preloadImage(sigridKaagImgUrl).catch(() => 'https://via.placeholder.com/300x300/3b82f6/ffffff?text=Sigrid+Kaag'),
+          preloadImage(jesseKlaverImgUrl).catch(() => 'https://via.placeholder.com/300x300/ef4444/ffffff?text=Jesse+Klaver'),
+          preloadImage(geertWildersImgUrl).catch(() => 'https://via.placeholder.com/300x300/ef4444/ffffff?text=Geert+Wilders'),
+          preloadImage(wopkeHoekstraImgUrl).catch(() => 'https://via.placeholder.com/300x300/3b82f6/ffffff?text=Wopke+Hoekstra'),
+          preloadImage(lilianMarijnissenImgUrl).catch(() => 'https://via.placeholder.com/300x300/ef4444/ffffff?text=Lilian+Marijnissen')
+        ]);
+      
+      // Log successful image loading
+      log('All politician images loaded successfully');
+      
+      container.innerHTML = `
       <div class="politicians-tab-content">
         <div class="politicians-header">
           <h2>Key Political Figures in ${location}</h2>
@@ -668,7 +802,7 @@
         
         <div class="politicians-grid">
           <div class="politician-card">
-            <img src="https://via.placeholder.com/300x300" alt="Mark Rutte" class="politician-image">
+            <img src="${markRutteImg}" alt="Mark Rutte" class="politician-image">
             <div class="politician-details">
               <h3>Mark Rutte</h3>
               <p class="politician-position">Prime Minister</p>
@@ -695,7 +829,7 @@
           </div>
           
           <div class="politician-card">
-            <img src="https://via.placeholder.com/300x300" alt="Sigrid Kaag" class="politician-image">
+            <img src="${sigridKaagImg}" alt="Sigrid Kaag" class="politician-image">
             <div class="politician-details">
               <h3>Sigrid Kaag</h3>
               <p class="politician-position">Minister of Finance</p>
@@ -722,7 +856,7 @@
           </div>
           
           <div class="politician-card">
-            <img src="https://via.placeholder.com/300x300" alt="Geert Wilders" class="politician-image">
+            <img src="${geertWildersImg}" alt="Geert Wilders" class="politician-image">
             <div class="politician-details">
               <h3>Geert Wilders</h3>
               <p class="politician-position">Party Leader</p>
@@ -749,7 +883,7 @@
           </div>
           
           <div class="politician-card">
-            <img src="https://via.placeholder.com/300x300" alt="Jesse Klaver" class="politician-image">
+            <img src="${jesseKlaverImg}" alt="Jesse Klaver" class="politician-image">
             <div class="politician-details">
               <h3>Jesse Klaver</h3>
               <p class="politician-position">Party Leader</p>
@@ -776,7 +910,7 @@
           </div>
           
           <div class="politician-card">
-            <img src="https://via.placeholder.com/300x300" alt="Wopke Hoekstra" class="politician-image">
+            <img src="${wopkeHoekstraImg}" alt="Wopke Hoekstra" class="politician-image">
             <div class="politician-details">
               <h3>Wopke Hoekstra</h3>
               <p class="politician-position">Party Leader</p>
@@ -803,7 +937,7 @@
           </div>
           
           <div class="politician-card">
-            <img src="https://via.placeholder.com/300x300" alt="Lilian Marijnissen" class="politician-image">
+            <img src="${lilianMarijnissenImg}" alt="Lilian Marijnissen" class="politician-image">
             <div class="politician-details">
               <h3>Lilian Marijnissen</h3>
               <p class="politician-position">Party Leader</p>
@@ -836,6 +970,35 @@
         </div>
       </div>
     `;
+    } catch (error) {
+      logError(`Error loading politician images: ${error.message}`);
+      
+      // Fallback to placeholder images if image loading fails
+      container.innerHTML = `
+      <div class="politicians-tab-content">
+        <div class="politicians-header">
+          <h2>Key Political Figures in ${location}</h2>
+          <div class="politicians-filters">
+            <button class="filter-btn">Filter by Party</button>
+            <button class="sort-btn">Sort by Influence</button>
+          </div>
+        </div>
+        
+        <div class="politicians-grid">
+          <div class="politician-card">
+            <img src="https://via.placeholder.com/300x300/3b82f6/ffffff?text=Mark+Rutte" alt="Mark Rutte" class="politician-image">
+            <!-- Rest of the politician cards with placeholder images -->
+          </div>
+          <!-- Add more placeholder cards as needed -->
+        </div>
+        
+        <div class="politicians-footer">
+          <div class="politician-count">Showing 6 of 24 politicians</div>
+          <button class="load-more-btn">Load More Politicians</button>
+        </div>
+      </div>
+      `;
+    }
   }
   
   // Function to load the Issues tab content

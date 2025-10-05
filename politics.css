@@ -152,14 +152,17 @@
 
 .featured-story img {
   width: 100%;
-  max-height: 300px;
+  height: 300px;
   object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 @media (min-width: 768px) {
   .featured-story img {
     width: 50%;
-    max-height: none;
+    height: 100%;
+    min-height: 350px;
   }
 }
 
@@ -231,6 +234,8 @@
   width: 100%;
   height: 160px;
   object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .story-card .story-details {
@@ -451,6 +456,8 @@
   width: 100%;
   height: 200px;
   object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 @media (min-width: 640px) {
@@ -458,6 +465,7 @@
     width: 50%; /* Exactly half of the card */
     height: 100%;
     object-fit: cover;
+    flex-shrink: 0; /* Prevent image from shrinking */
   }
 }
 
@@ -522,21 +530,22 @@
   margin-right: 8px;
 }
 
-.politician-actions {
-  display: flex;
-  gap: 8px;
-}
-
+/* Politician action buttons */
 .view-profile-btn, .follow-btn {
-  padding: 6px 12px;
+  padding: 8px 12px;
   font-size: 12px;
   background-color: transparent;
   border: 1px solid #d1d5db;
   border-radius: 4px;
   cursor: pointer;
+  height: 32px; /* Fixed height for both buttons */
+  line-height: 1;
+  box-sizing: border-box;
 }
 
-.view-profile-btn {
+.politician-actions {
+  display: flex;
+  gap: 8px;
   margin-top: 24px;
 }
 
@@ -801,6 +810,42 @@
     border-left: 1px solid #374151;
     border-right: 1px solid #374151;
   }
+}
+
+/* Loading indicator and error message */
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 18px;
+  color: #6b7280;
+  position: relative;
+}
+
+.loading-indicator::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  margin-left: 12px;
+  animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+  to { transform: rotate(360deg); }
+}
+
+.error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 18px;
+  color: #ef4444;
+  text-align: center;
 }
 
 /* Dark mode support */
