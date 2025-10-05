@@ -495,8 +495,8 @@
         </div>
         
         <div class="politics-footer">
-          <button class="load-more-btn">Load More Stories</button>
           <div class="story-count">Showing 4 of 42 stories</div>
+          <button class="load-more-btn">Load More Stories</button>
         </div>
       </div>
     `;
@@ -631,12 +631,8 @@
         </div>
         
         <div class="events-footer">
-          <div class="calendar-view-btn">
-            <button>View Calendar</button>
-          </div>
-          <div class="load-more-btn">
-            <button>Load More Events</button>
-          </div>
+          <div class="event-count">Showing 5 of 18 events</div>
+          <button class="load-more-btn">Load More Events</button>
         </div>
       </div>
     `;
@@ -819,6 +815,7 @@
         </div>
         
         <div class="politicians-footer">
+          <div class="politician-count">Showing 6 of 24 politicians</div>
           <button class="load-more-btn">Load More Politicians</button>
         </div>
       </div>
@@ -981,6 +978,7 @@
         </div>
         
         <div class="issues-footer">
+          <div class="issue-count">Showing 3 of 15 issues</div>
           <button class="load-more-btn">Load More Issues</button>
         </div>
       </div>
