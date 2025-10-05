@@ -404,7 +404,8 @@
       // Load content based on tab name
       switch(tabName) {
         case 'News':
-          loadNewsTabContent(contentContainer, location);
+          // Handle async loading for News tab
+          await loadNewsTabContent(contentContainer, location);
           break;
         case 'Events':
           loadEventsTabContent(contentContainer, location);
@@ -417,7 +418,8 @@
           loadIssuesTabContent(contentContainer, location);
           break;
         default:
-          loadNewsTabContent(contentContainer, location);
+          // Handle async loading for default News tab
+          await loadNewsTabContent(contentContainer, location);
       }
     } catch (error) {
       logError(`Error loading ${tabName} tab: ${error.message}`);
@@ -426,11 +428,40 @@
   }
   
   // Function to load the News tab content
-  function loadNewsTabContent(container, location) {
-    container.innerHTML = `
+  async function loadNewsTabContent(container, location) {
+    // Show loading indicator
+    container.innerHTML = '<div class="loading-indicator">Loading news content...</div>';
+    
+    try {
+      // Get URLs for all news images
+      const supremeCourtImgUrl = getExtensionResourceUrl('media/supreme_court.jpg');
+      const healthcareBillImgUrl = getExtensionResourceUrl('media/healthcare_bill.jpg');
+      const euTradeImgUrl = getExtensionResourceUrl('media/eu_trade.jpg');
+      const presidentialDebateImgUrl = getExtensionResourceUrl('media/presidential_debate.jpeg');
+      
+      // Debug log the image URLs
+      log('News Image URLs:');
+      log('- Supreme Court:', supremeCourtImgUrl);
+      log('- Healthcare Bill:', healthcareBillImgUrl);
+      log('- EU Trade:', euTradeImgUrl);
+      log('- Presidential Debate:', presidentialDebateImgUrl);
+      
+      // Try to preload all images
+      const [supremeCourtImg, healthcareBillImg, euTradeImg, presidentialDebateImg] = 
+        await Promise.all([
+          preloadImage(supremeCourtImgUrl).catch(() => 'https://via.placeholder.com/800x400?text=Supreme+Court'),
+          preloadImage(healthcareBillImgUrl).catch(() => 'https://via.placeholder.com/400x200?text=Healthcare+Bill'),
+          preloadImage(euTradeImgUrl).catch(() => 'https://via.placeholder.com/400x200?text=EU+Trade'),
+          preloadImage(presidentialDebateImgUrl).catch(() => 'https://via.placeholder.com/400x200?text=Presidential+Debate')
+        ]);
+      
+      // Log successful image loading
+      log('All news images loaded successfully');
+      
+      container.innerHTML = `
       <div class="news-tab-content">
         <div class="featured-story">
-          <img src="https://via.placeholder.com/800x400" alt="Featured story">
+          <img src="${supremeCourtImg}" alt="Supreme Court Rules on Major Election Law Case">
           <div class="story-details">
             <div class="story-meta">
               <span class="story-category">FEATURED</span>
@@ -457,7 +488,7 @@
         
         <div class="stories-grid">
           <div class="story-card">
-            <img src="https://via.placeholder.com/400x200" alt="Story image">
+            <img src="${healthcareBillImg}" alt="New Major Healthcare Bill Advances in Senate">
             <div class="story-details">
               <div class="story-meta">
                 <span class="story-category">POLICY</span>
@@ -481,7 +512,7 @@
           </div>
           
           <div class="story-card">
-            <img src="https://via.placeholder.com/400x200" alt="Story image">
+            <img src="${euTradeImg}" alt="Trade Agreement with European Union Finalized">
             <div class="story-details">
               <div class="story-meta">
                 <span class="story-category">INTERNATIONAL</span>
@@ -505,7 +536,7 @@
           </div>
           
           <div class="story-card">
-            <img src="https://via.placeholder.com/400x200" alt="Story image">
+            <img src="${presidentialDebateImg}" alt="Presidential Debate Ratings Hit Record High">
             <div class="story-details">
               <div class="story-meta">
                 <span class="story-category">ELECTION</span>
@@ -535,6 +566,36 @@
         </div>
       </div>
     `;
+    } catch (error) {
+      logError(`Error loading news images: ${error.message}`);
+      
+      // Fallback to placeholder images if image loading fails
+      container.innerHTML = `
+      <div class="news-tab-content">
+        <div class="featured-story">
+          <img src="https://via.placeholder.com/800x400?text=Featured+Story" alt="Featured story">
+          <div class="story-details">
+            <div class="story-meta">
+              <span class="story-category">FEATURED</span>
+              <span class="bias-indicator center">Center</span>
+            </div>
+            <h2>Supreme Court Rules on Major Election Law Case</h2>
+            <p>The Supreme Court issued a landmark ruling today that will have significant implications for upcoming elections across the country...</p>
+            <!-- Rest of the featured story content -->
+          </div>
+        </div>
+        
+        <div class="stories-grid">
+          <!-- Placeholder story cards -->
+        </div>
+        
+        <div class="politics-footer">
+          <div class="story-count">Showing 4 of 42 stories</div>
+          <button class="load-more-btn">Load More Stories</button>
+        </div>
+      </div>
+      `;
+    }
   }
   // Function to load the Events tab content
   function loadEventsTabContent(container, location) {
