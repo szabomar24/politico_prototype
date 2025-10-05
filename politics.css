@@ -32,11 +32,8 @@
   font-weight: 500;
 }
 
-/* Only apply this styling to filter buttons in content areas, not in the header */
-.politics-actions .filter-btn,
-.events-filters .filter-btn,
-.politicians-filters .filter-btn,
-.issues-filters .filter-btn {
+/* Only apply this styling to filter buttons in the main politics actions area */
+.politics-actions .filter-btn {
   background-color: #3b82f6;
   color: white;
   border: none;
@@ -293,6 +290,21 @@
   gap: 12px;
 }
 
+.events-filters .filter-btn,
+.events-filters .sort-btn,
+.politicians-filters .filter-btn,
+.politicians-filters .sort-btn,
+.issues-filters .filter-btn,
+.issues-filters .sort-btn {
+  padding: 8px 16px;
+  background-color: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  cursor: pointer;
+  color: inherit;
+  font-size: 14px;
+}
+
 .events-list {
   display: flex;
   flex-direction: column;
@@ -301,10 +313,12 @@
 
 .event-card.large {
   display: flex;
-  background-color: white;
+  background-color: transparent;
+  border: 3px solid white;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  margin-bottom: 10px;
 }
 
 .event-date {
@@ -447,7 +461,7 @@
 .politician-card {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: transparent;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -780,11 +794,15 @@
 @media (prefers-color-scheme: dark) {
   .featured-story,
   .story-card,
-  .event-card.large,
   .politician-card,
   .issue-card.large,
   .position {
-    background-color: #1f2937;
+    background-color: transparent;
+  }
+  
+  .event-card.large {
+    background-color: transparent;
+    border-color: #374151;
   }
   
   .event-date {
