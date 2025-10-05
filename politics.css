@@ -94,6 +94,8 @@
   display: flex;
   border-bottom: 1px solid #e5e7eb;
   margin-bottom: 24px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .tab-btn {
@@ -103,6 +105,7 @@
   font-weight: 500;
   cursor: pointer;
   position: relative;
+  white-space: nowrap;
 }
 
 .tab-btn.active {
@@ -119,67 +122,164 @@
   background-color: #3b82f6;
 }
 
-/* Three Column Layout */
-.three-column-layout {
-  display: grid;
-  grid-template-columns: 1fr;
+/* News Tab Styles */
+.news-tab-content {
+  display: flex;
+  flex-direction: column;
   gap: 24px;
 }
 
-@media (min-width: 768px) {
-  .three-column-layout {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .three-column-layout {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.politics-column {
+.featured-story {
+  display: flex;
+  flex-direction: column;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
-.column-header {
+@media (min-width: 768px) {
+  .featured-story {
+    flex-direction: row;
+  }
+}
+
+.featured-story img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .featured-story img {
+    width: 50%;
+    max-height: none;
+  }
+}
+
+.featured-story .story-details {
+  padding: 20px;
+}
+
+.story-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
-  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 12px;
 }
 
-.column-header h2 {
+.story-category {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  letter-spacing: 0.05em;
+}
+
+.featured-story h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+
+.featured-story p {
+  font-size: 16px;
+  color: #4b5563;
+  margin: 0 0 16px 0;
+}
+
+.story-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.stories-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .stories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .stories-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.story-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.story-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.story-card .story-details {
+  padding: 16px;
+}
+
+.story-card h3 {
   font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.story-card p {
+  font-size: 14px;
+  color: #4b5563;
+  margin: 0 0 12px 0;
+}
+
+/* Events Tab Styles */
+.events-tab-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.events-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.events-header h2 {
+  font-size: 24px;
   font-weight: 600;
   margin: 0;
 }
 
-.view-all-btn {
-  font-size: 14px;
-  color: #3b82f6;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-/* Events Column */
-.events-list {
-  padding: 16px;
-}
-
-.event-card {
+.events-filters {
   display: flex;
-  padding: 12px;
-  border-bottom: 1px solid #e5e7eb;
+  gap: 12px;
 }
 
-.event-card:last-child {
-  border-bottom: none;
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.event-card.large {
+  display: flex;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 16px;
 }
 
 .event-date {
@@ -187,8 +287,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   background-color: #f3f4f6;
   border-radius: 8px;
   margin-right: 16px;
@@ -196,14 +296,14 @@
 }
 
 .event-month {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
   color: #6b7280;
 }
 
 .event-day {
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 700;
 }
 
@@ -212,9 +312,15 @@
 }
 
 .event-details h3 {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   margin: 0 0 8px 0;
+}
+
+.event-description {
+  font-size: 14px;
+  color: #4b5563;
+  margin: 0 0 12px 0;
 }
 
 .event-location, .event-time {
@@ -223,14 +329,30 @@
   margin: 0 0 4px 0;
 }
 
+.event-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.event-tag {
+  font-size: 12px;
+  padding: 4px 8px;
+  background-color: #f3f4f6;
+  border-radius: 9999px;
+}
+
 .event-actions {
   display: flex;
   gap: 8px;
-  margin-top: 8px;
+  margin-top: 12px;
 }
 
-.event-reminder-btn, .event-share-btn {
-  padding: 4px 8px;
+.event-reminder-btn, 
+.event-calendar-btn, 
+.event-share-btn {
+  padding: 6px 12px;
   font-size: 12px;
   background-color: transparent;
   border: 1px solid #d1d5db;
@@ -238,50 +360,135 @@
   cursor: pointer;
 }
 
-/* Political Figures Column */
-.figures-list {
-  padding: 16px;
-}
-
-.figure-card {
+.events-footer {
   display: flex;
-  padding: 12px;
-  border-bottom: 1px solid #e5e7eb;
+  justify-content: space-between;
+  margin-top: 24px;
 }
 
-.figure-card:last-child {
-  border-bottom: none;
+.calendar-view-btn button,
+.load-more-btn button {
+  padding: 8px 16px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.figure-image {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+/* Politicians Tab Styles */
+.politicians-tab-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.politicians-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.politicians-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.politicians-filters {
+  display: flex;
+  gap: 12px;
+}
+
+.politicians-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .politicians-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .politicians-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.politician-card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .politician-card {
+    flex-direction: row;
+  }
+}
+
+.politician-image {
+  width: 100%;
+  height: 150px;
   object-fit: cover;
-  margin-right: 16px;
-  flex-shrink: 0;
 }
 
-.figure-details {
+@media (min-width: 640px) {
+  .politician-image {
+    width: 150px;
+    height: 100%;
+  }
+}
+
+.politician-details {
+  padding: 16px;
   flex-grow: 1;
 }
 
-.figure-details h3 {
-  font-size: 16px;
+.politician-details h3 {
+  font-size: 18px;
   font-weight: 600;
   margin: 0 0 4px 0;
 }
 
-.figure-position, .figure-party {
+.politician-position, .politician-party {
   font-size: 14px;
   color: #6b7280;
   margin: 0 0 4px 0;
 }
 
-.figure-bias {
+.politician-stats {
+  display: flex;
+  gap: 16px;
+  margin: 12px 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.stat-value {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.politician-bias {
   display: flex;
   align-items: center;
-  margin-top: 8px;
+  margin-bottom: 12px;
 }
 
 .bias-label {
@@ -290,29 +497,89 @@
   margin-right: 8px;
 }
 
-/* Issues Column */
-.issues-list {
-  padding: 16px;
+.politician-actions {
+  display: flex;
+  gap: 8px;
 }
 
-.issue-card {
-  padding: 12px;
-  border-bottom: 1px solid #e5e7eb;
+.view-profile-btn, .follow-btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  background-color: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.issue-card:last-child {
-  border-bottom: none;
+.view-profile-btn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+}
+
+.politicians-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.politicians-footer .load-more-btn {
+  padding: 8px 16px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Issues Tab Styles */
+.issues-tab-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.issues-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.issues-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.issues-filters {
+  display: flex;
+  gap: 12px;
+}
+
+.issues-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.issue-card.large {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .issue-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .issue-header h3 {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   margin: 0;
 }
@@ -334,14 +601,69 @@
   background-color: #fee2e2;
 }
 
-.issue-description {
-  font-size: 14px;
-  color: #6b7280;
-  margin-bottom: 12px;
+.issue-content {
+  padding: 16px;
 }
 
-.issue-coverage {
-  margin-bottom: 12px;
+.issue-description {
+  font-size: 14px;
+  color: #4b5563;
+  margin: 0 0 16px 0;
+}
+
+.issue-stats {
+  margin-bottom: 16px;
+}
+
+.issue-stats .stat {
+  margin-bottom: 8px;
+}
+
+.issue-positions {
+  margin-bottom: 16px;
+}
+
+.issue-positions h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.position-spectrum {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.position {
+  flex: 1;
+  padding: 12px;
+  border-radius: 4px;
+  background-color: #f9fafb;
+}
+
+.position-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.position.left .position-label {
+  color: #3b82f6;
+}
+
+.position.center .position-label {
+  color: #6b7280;
+}
+
+.position.right .position-label {
+  color: #ef4444;
+}
+
+.position p {
+  font-size: 12px;
+  margin: 0;
 }
 
 .issue-sources {
@@ -359,6 +681,21 @@
   border: none;
   cursor: pointer;
   padding: 0;
+}
+
+.issues-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.issues-footer .load-more-btn {
+  padding: 8px 16px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 /* Bias indicators */
@@ -416,8 +753,12 @@
 
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
-  .politics-location-prompt,
-  .politics-column {
+  .featured-story,
+  .story-card,
+  .event-card.large,
+  .politician-card,
+  .issue-card.large,
+  .position {
     background-color: #1f2937;
   }
   
@@ -425,47 +766,53 @@
     background-color: #374151;
   }
   
-  .location-chip {
+  .event-tag {
     background-color: #374151;
-    border-color: #4b5563;
+    color: #e5e7eb;
   }
   
   .event-reminder-btn, 
+  .event-calendar-btn, 
   .event-share-btn,
-  .change-location-btn {
+  .view-profile-btn, 
+  .follow-btn {
     border-color: #4b5563;
     color: #e5e7eb;
   }
   
-  .location-input-group input {
-    background-color: #374151;
-    border-color: #4b5563;
-    color: #e5e7eb;
-  }
-  
-  #detect-location-btn {
-    background-color: #4b5563;
-    border-color: #6b7280;
-    color: #e5e7eb;
-  }
-  
-  .politics-location-prompt h2,
-  .column-header h2,
+  .featured-story h2,
+  .story-card h3,
   .event-details h3,
-  .figure-details h3,
-  .issue-header h3 {
+  .politician-details h3,
+  .issue-header h3,
+  .issues-header h2,
+  .politicians-header h2,
+  .events-header h2 {
     color: #f3f4f6;
   }
   
-  .politics-location-prompt p,
+  .featured-story p,
+  .story-card p,
+  .event-description,
+  .issue-description,
+  .position p {
+    color: #d1d5db;
+  }
+  
+  .story-category,
   .event-location, 
   .event-time,
-  .figure-position, 
-  .figure-party,
-  .issue-description,
-  .coverage-meter span,
+  .politician-position, 
+  .politician-party,
+  .stat-label,
+  .bias-label,
   .issue-sources span,
-  .bias-label {
-    color: #d1d5db;
+  .story-footer {
+    color: #9ca3af;
+  }
+  
+  .issue-header,
+  .location-tabs {
+    border-color: #4b5563;
   }
 }

@@ -1,0 +1,503 @@
+(function () {
+  // Enable debug mode for detailed logging
+  const DEBUG = true;
+  
+  // Helper function for logging
+  function log(message, ...args) {
+    if (DEBUG) {
+      console.log(`[GN-Politics] ${message}`, ...args);
+    }
+  }
+  
+  // Helper function for error logging
+  function logError(message, ...args) {
+    console.error(`[GN-Politics] ${message}`, ...args);
+  }
+  
+  // Flag to track if politics content is loaded
+  window.__gn_politics_loaded = false;
+  
+  // Run immediately with retries
+  log('Extension loaded on page:', window.location.href);
+  
+  // Debug the page structure to find the navbar
+  function debugPageStructure() {
+    log('Debugging page structure to find navbar...');
+    
+    // Look for all potential navbar elements
+    const navElements = [
+      document.querySelectorAll('nav'),
+      document.querySelectorAll('header'),
+      document.querySelectorAll('.navbar'),
+      document.querySelectorAll('[role="navigation"]'),
+      document.querySelectorAll('ul')
+    ];
+    
+    // Log what we found
+    navElements.forEach((elements, i) => {
+      const types = ['nav', 'header', '.navbar', '[role="navigation"]', 'ul'];
+      log(`Found ${elements.length} ${types[i]} elements`);
+      
+      // Log details of each element
+      Array.from(elements).forEach((el, j) => {
+        log(`${types[i]} #${j}: id=${el.id}, class=${el.className}, children=${el.children.length}`);
+        
+        // Look for potential navbar items
+        const links = el.querySelectorAll('a');
+        if (links.length > 0) {
+          log(`- Contains ${links.length} links:`);
+          Array.from(links).slice(0, 3).forEach(link => {
+            log(`  - ${link.textContent}: id=${link.id}, href=${link.getAttribute('href')}`);
+          });
+          if (links.length > 3) {
+            log(`  - ... and ${links.length - 3} more links`);
+          }
+        }
+      });
+    });
+    
+    // Specifically look for the Blindspot link
+    const blindspotLinks = document.querySelectorAll('a[href*="blindspot"], a#header-navbar-blindspot');
+    log(`Found ${blindspotLinks.length} potential Blindspot links`);
+    Array.from(blindspotLinks).forEach((link, i) => {
+      log(`Blindspot link #${i}: id=${link.id}, text=${link.textContent}, href=${link.getAttribute('href')}`);
+    });
+  }
+  
+  // Function to inject the Politics link into the navbar
+  function injectPoliticsLink() {
+    log('Attempting to inject Politics link...');
+    
+    // Find the navbar - look for common elements and specific Ground News selectors
+    // First look for the Blindspot link as a reference point
+    const blindspotLink = document.querySelector('#header-navbar-blindspot');
+    
+    if (blindspotLink) {
+      log('Found Blindspot link, using it as reference');
+      // If we found the Blindspot link, we can use its parent as a reference
+      const blindspotWrapper = blindspotLink.parentElement;
+      
+      // Check if we already injected the link
+      if (document.querySelector('#gn-politics-link') || document.querySelector('#header-navbar-politics')) {
+        log('Politics link already exists');
+        return;
+      }
+      
+      // Clone the wrapper div (to preserve flex-col structure and styling)
+      const politicsWrapper = blindspotWrapper.cloneNode(true);
+      
+      // Update the link inside
+      const link = politicsWrapper.querySelector('a');
+      if (link) {
+        link.id = 'header-navbar-politics';
+        link.href = '/politics-prototype';
+        link.textContent = 'Politics';
+        
+        // Add click handler
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          log('Politics link clicked');
+          
+          // Update URL without reloading
+          window.history.pushState({}, '', '/politics-prototype');
+          
+          // Highlight this link
+          highlightPoliticsLink();
+          
+          // Load politics content
+          loadPoliticsContent();
+        });
+        
+        // Insert after Blindspot wrapper
+        blindspotWrapper.insertAdjacentElement('afterend', politicsWrapper);
+        log('Politics link injected successfully via Blindspot reference');
+        return;
+      }
+    }
+    
+    // If we couldn't find the Blindspot link, try general navbar detection
+    const navbar = document.querySelector('nav ul') || 
+                  document.querySelector('.navbar') || 
+                  document.querySelector('header ul') ||
+                  document.querySelector('[role="navigation"]') ||
+                  document.querySelector('header nav') ||
+                  document.querySelector('.nav-links');
+    
+    if (!navbar) {
+      log('Could not find navbar, will retry later');
+      setTimeout(injectPoliticsLink, 500);
+      return;
+    }
+    
+    // Check if we already injected the link
+    if (document.querySelector('#gn-politics-link')) {
+      log('Politics link already exists');
+      return;
+    }
+    
+    // Create the Politics link
+    const politicsLi = document.createElement('li');
+    politicsLi.className = navbar.children[0]?.className || '';
+    
+    const politicsLink = document.createElement('a');
+    politicsLink.id = 'gn-politics-link';
+    politicsLink.href = '/politics-prototype';
+    politicsLink.textContent = 'Politics';
+    politicsLink.className = navbar.querySelector('a')?.className || '';
+    
+    // Add click handler
+    politicsLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      log('Politics link clicked');
+      
+      // Update URL without reloading
+      window.history.pushState({}, '', '/politics-prototype');
+      
+      // Highlight this link
+      highlightPoliticsLink();
+      
+      // Load politics content
+      loadPoliticsContent();
+    });
+    
+    politicsLi.appendChild(politicsLink);
+    
+    // Insert after the first few items
+    if (navbar.children.length > 2) {
+      navbar.insertBefore(politicsLi, navbar.children[2]);
+    } else {
+      navbar.appendChild(politicsLi);
+    }
+    
+    log('Politics link injected successfully');
+  }
+  
+  // Function to highlight the Politics link
+  function highlightPoliticsLink() {
+    // Find all navbar links
+    const navLinks = document.querySelectorAll('nav a, .navbar a, header ul a');
+    
+    // Remove active class from all links
+    navLinks.forEach(link => {
+      if (link.classList.contains('active')) {
+        link.classList.remove('active');
+      }
+      // Also check for custom active classes
+      if (link.className.includes('active')) {
+        link.className = link.className.replace(/active/g, '').trim();
+      }
+    });
+    
+    // Add active class to politics link
+    const politicsLink = document.querySelector('#gn-politics-link') || document.querySelector('#header-navbar-politics');
+    if (politicsLink) {
+      politicsLink.classList.add('active');
+    }
+  }
+  
+  // Function to load politics content
+  function loadPoliticsContent() {
+    log('Loading politics content...');
+    
+    // Find the main content area
+    const mainContent = document.querySelector('main') || 
+                        document.querySelector('#content') || 
+                        document.querySelector('.content') || 
+                        document.querySelector('.container');
+    
+    if (!mainContent) {
+      logError('Could not find main content area');
+      return;
+    }
+    
+    // Store original content for restoration
+    if (!window.__gn_original_content) {
+      window.__gn_original_content = mainContent.innerHTML;
+    }
+    
+    // Check if we have a location set
+    if (window.__gn_politics_location) {
+      // If location is set, show the location-specific politics page
+      loadPoliticsLocationPage(mainContent, window.__gn_politics_location);
+    } else {
+      // If no location is set, show the location prompt
+      showLocationPrompt(mainContent);
+    }
+    
+    // Set loaded flag
+    window.__gn_politics_loaded = true;
+    
+    log('Politics content loaded successfully');
+  }
+  
+  // Function to show the location prompt
+  function showLocationPrompt(mainContent) {
+    log('Showing location prompt...');
+    
+    // Create politics container with location prompt that matches the Local page style
+    const politicsContainer = document.createElement('div');
+    politicsContainer.id = 'gn-politics-container';
+    politicsContainer.innerHTML = `
+      <article class="max-w-screen-wide mx-auto max-md:mx-[0.6rem]">
+        <div class="hideElementSiteWide flex flex-col rounded-lg px-[0.9rem] py-[6.3rem] mx-auto items-center justify-center gap-[1.3rem] w-max pt-[1.3rem] pb-[2.5rem] tablet:pt-[3.8rem] tablet:pb-[7.5rem] desktop:pt-[6.3rem] desktop:pb-[10rem] leading-tightest">
+          <h1 class="text-32 font-bold text-center max-w-5xl">Choose a location to create a custom politics feed</h1>
+          <span class="text-18 font-normal text-center max-w-3xl">Get updates on local political news, events, and figures relevant to your area</span>
+          
+          <div class="flex w-full" style="max-width: 26.25rem;">
+            <div class="w-full text-14 border border-ground-black dark:border-dark-ground-black relative">
+              <input id="politics-location-input" placeholder="Enter your city's name" autocomplete="on" class="w-full py-[0.6rem] text-16 border-none focus:underline focus:underline-offset-1 dark:bg-ground-black placeholder-[var(--gray-200)] dark:placeholder-[var(--gray-200)] dark:text-light-primary bg-light-primary text-dark-primary" type="text" value="Amsterdam, Netherlands" name="searchLocation" style="box-shadow: none;">
+              <div class="flex flex-col gap-[6px] tablet:gap-[8px] overflow-scroll absolute bg-light-light dark:bg-[var(--gray-100)] w-full box-content shadow border-l border-b border-r border-dark-primary false location_scroll-bar__YQSyq" style="max-height: 6.25rem; left: -1px;"></div>
+            </div>
+          </div>
+          
+          <div class="w-full max-w-2xl">
+            <button id="set-location-btn" type="button" class="cursor-pointer bg-dark-primary dark:bg-light-primary flex justify-center py-[1.3rem] rounded-lg text-light-primary dark:text-dark-primary text-16 w-full h-[3.1rem] items-center">Set Your Location</button>
+            <div class="flex justify-center">
+              <button id="detect-location-btn" type="button" class="cursor-pointer flex gap-[0.6rem] mt-[0.9rem] text-14 justify-center underline font-semibold relative">Or, enable location permissions</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+    
+    // Replace main content
+    mainContent.innerHTML = '';
+    mainContent.appendChild(politicsContainer);
+    
+    // Add event listeners after the content is added to the DOM
+    setTimeout(() => {
+      // Set location button
+      const setLocationBtn = document.getElementById('set-location-btn');
+      if (setLocationBtn) {
+        setLocationBtn.addEventListener('click', () => {
+          const locationInput = document.getElementById('politics-location-input');
+          const location = locationInput ? locationInput.value : 'Netherlands';
+          window.__gn_politics_location = location;
+          
+          // Update URL to reflect the location
+          window.history.pushState({}, '', `/politics-prototype/${location.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`);
+          
+          // Load the location-specific politics page
+          loadPoliticsLocationPage(mainContent, location);
+        });
+      }
+      
+      // Location chips
+      const locationChips = document.querySelectorAll('.location-chip');
+      locationChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          const locationInput = document.getElementById('politics-location-input');
+          if (locationInput) {
+            locationInput.value = chip.textContent;
+          }
+        });
+      });
+    }, 100);
+  }
+  
+  // Function to load the location-specific politics page
+  function loadPoliticsLocationPage(mainContent, location) {
+    log(`Loading politics page for location: ${location}`);
+    
+    // Default to Netherlands if no location is provided
+    const displayLocation = location || 'Netherlands';
+    
+    // Store the active tab (default to News)
+    window.__gn_politics_active_tab = window.__gn_politics_active_tab || 'News';
+    
+    // Create the location-specific politics page
+    const politicsContainer = document.createElement('div');
+    politicsContainer.id = 'gn-politics-location-container';
+    politicsContainer.innerHTML = `
+      <div class="politics-location-header">
+        <div class="location-info">
+          <h1>Politics: ${displayLocation}</h1>
+          <div class="location-actions">
+            <button class="change-location-btn">Change Location</button>
+            <button class="filter-btn">Filter</button>
+          </div>
+        </div>
+        <div class="location-tabs">
+          <button class="tab-btn" data-tab="News">News</button>
+          <button class="tab-btn" data-tab="Events">Events</button>
+          <button class="tab-btn" data-tab="Politicians">Politicians</button>
+          <button class="tab-btn" data-tab="Issues">Issues</button>
+        </div>
+      </div>
+      
+      <div class="politics-location-content">
+        <!-- Tab content will be loaded here -->
+      </div>
+    `;
+    
+    // Replace main content
+    mainContent.innerHTML = '';
+    mainContent.appendChild(politicsContainer);
+    
+    // Add event listeners after the content is added to the DOM
+    setTimeout(() => {
+      // Change location button
+      const changeLocationBtn = document.querySelector('.change-location-btn');
+      if (changeLocationBtn) {
+        changeLocationBtn.addEventListener('click', () => {
+          // Clear the location and show the prompt again
+          window.__gn_politics_location = null;
+          showLocationPrompt(mainContent);
+        });
+      }
+      
+      // Tab buttons
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      tabButtons.forEach(button => {
+        const tabName = button.getAttribute('data-tab');
+        
+        // Mark the active tab
+        if (tabName === window.__gn_politics_active_tab) {
+          button.classList.add('active');
+        }
+        
+        button.addEventListener('click', () => {
+          // Update active tab
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          
+          // Store the active tab
+          window.__gn_politics_active_tab = tabName;
+          
+          // Load the tab content
+          loadTabContent(tabName, displayLocation);
+        });
+      });
+      
+      // Load the default tab content (News)
+      loadTabContent(window.__gn_politics_active_tab, displayLocation);
+    }, 100);
+  }
+  
+  // Function to load the content for a specific tab
+  function loadTabContent(tabName, location) {
+    log(`Loading ${tabName} tab content for ${location}`);
+    
+    const contentContainer = document.querySelector('.politics-location-content');
+    if (!contentContainer) {
+      logError('Could not find politics content container');
+      return;
+    }
+    
+    // Clear existing content
+    contentContainer.innerHTML = '';
+    
+    // Load content based on tab name
+    switch(tabName) {
+      case 'News':
+        loadNewsTabContent(contentContainer, location);
+        break;
+      case 'Events':
+        loadEventsTabContent(contentContainer, location);
+        break;
+      case 'Politicians':
+        loadPoliticiansTabContent(contentContainer, location);
+        break;
+      case 'Issues':
+        loadIssuesTabContent(contentContainer, location);
+        break;
+      default:
+        loadNewsTabContent(contentContainer, location);
+    }
+  }
+  
+  // Function to load the News tab content
+  function loadNewsTabContent(container, location) {
+    container.innerHTML = `
+      <div class="news-tab-content">
+        <div class="featured-story">
+          <img src="https://via.placeholder.com/800x400" alt="Featured story">
+          <div class="story-details">
+            <div class="story-meta">
+              <span class="story-category">FEATURED</span>
+              <span class="bias-indicator center">Center</span>
+            </div>
+            <h2>Supreme Court Rules on Major Election Law Case</h2>
+            <p>The Supreme Court issued a landmark ruling today that will have significant implications for upcoming elections across the country...</p>
+            <div class="coverage-meter">
+              <div class="meter-bar" style="width: 85%"></div>
+              <span>85% Coverage</span>
+            </div>
+            <div class="story-footer">
+              <div class="sources">
+                <span>12 sources</span>
+              </div>
+              <div class="time">2 hours ago</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="stories-grid">
+          <div class="story-card">
+            <img src="https://via.placeholder.com/400x200" alt="Story image">
+            <div class="story-details">
+              <div class="story-meta">
+                <span class="story-category">POLICY</span>
+                <span class="bias-indicator left">Left</span>
+              </div>
+              <h3>New Healthcare Bill Advances in Senate</h3>
+              <p>The controversial healthcare bill has advanced to the next stage after a narrow vote...</p>
+              <div class="coverage-meter">
+                <div class="meter-bar" style="width: 65%"></div>
+                <span>65% Coverage</span>
+              </div>
+              <div class="story-footer">
+                <div class="sources">8 sources</div>
+                <div class="time">5 hours ago</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="story-card">
+            <img src="https://via.placeholder.com/400x200" alt="Story image">
+            <div class="story-details">
+              <div class="story-meta">
+                <span class="story-category">INTERNATIONAL</span>
+                <span class="bias-indicator right">Right</span>
+              </div>
+              <h3>Trade Agreement with European Union Finalized</h3>
+              <p>After months of negotiations, the new trade agreement has been finalized...</p>
+              <div class="coverage-meter">
+                <div class="meter-bar" style="width: 72%"></div>
+                <span>72% Coverage</span>
+              </div>
+              <div class="story-footer">
+                <div class="sources">10 sources</div>
+                <div class="time">1 day ago</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="story-card">
+            <img src="https://via.placeholder.com/400x200" alt="Story image">
+            <div class="story-details">
+              <div class="story-meta">
+                <span class="story-category">ELECTION</span>
+                <span class="bias-indicator center-right">Center-Right</span>
+              </div>
+              <h3>Presidential Debate Ratings Hit Record High</h3>
+              <p>Last night's presidential debate drew the highest viewership in history...</p>
+              <div class="coverage-meter">
+                <div class="meter-bar" style="width: 90%"></div>
+                <span>90% Coverage</span>
+              </div>
+              <div class="story-footer">
+                <div class="sources">15 sources</div>
+                <div class="time">12 hours ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="politics-footer">
+          <button class="load-more-btn">Load More Stories</button>
+          <div class="story-count">Showing 4 of 42 stories</div>
+        </div>
+      </div>
+    `;
+  }
