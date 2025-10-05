@@ -440,7 +440,7 @@
                 <span class="story-category">POLICY</span>
                 <span class="bias-indicator left">Left</span>
               </div>
-              <h3>New Healthcare Bill Advances in Senate</h3>
+              <h3>New Major Healthcare Bill Advances in Senate</h3>
               <p>The controversial healthcare bill has advanced to the next stage after a narrow vote...</p>
               <div class="coverage-meter">
                 <div class="meter-bar" style="width: 65%"></div>

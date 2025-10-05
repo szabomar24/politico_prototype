@@ -158,6 +158,7 @@
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  margin-bottom: 24px;
 }
 
 @media (min-width: 768px) {
@@ -317,7 +318,7 @@
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   padding: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 24px;
 }
 
 .event-date {
@@ -615,11 +616,10 @@
 
 .issue-card.large {
   background-color: transparent;
-  border: 3px solid white;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  margin-bottom: 10px;
+  margin-bottom: 24px;
 }
 
 .issue-header {
@@ -815,7 +815,9 @@
   
   .event-card.large,
   .politician-card,
-  .issue-card.large {
+  .issue-card.large,
+  .story-card,
+  .featured-story {
     background-color: transparent;
     box-shadow: 1px 3px 5px rgba(255, 255, 255, 0.05);
   }
