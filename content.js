@@ -425,7 +425,7 @@
                 <div class="meter-center" style="width: 30%"></div>
                 <div class="meter-right" style="width: 45%"></div>
               </div>
-              <span class="right-text">45% Right Coverage</span>
+              <span>45% Right Coverage</span>
             </div>
             <div class="story-footer">
               <div class="sources">
@@ -452,7 +452,7 @@
                   <div class="meter-center" style="width: 20%"></div>
                   <div class="meter-right" style="width: 15%"></div>
                 </div>
-                <span class="left-text">65% Left Coverage</span>
+                <span>65% Left Coverage</span>
               </div>
               <div class="story-footer">
                 <div class="sources">8 sources</div>
@@ -476,7 +476,7 @@
                   <div class="meter-center" style="width: 13%"></div>
                   <div class="meter-right" style="width: 72%"></div>
                 </div>
-                <span class="right-text">72% Right Coverage</span>
+                <span>72% Right Coverage</span>
               </div>
               <div class="story-footer">
                 <div class="sources">10 sources</div>
@@ -500,7 +500,7 @@
                   <div class="meter-center" style="width: 50%"></div>
                   <div class="meter-right" style="width: 30%"></div>
                 </div>
-                <span class="center-text">50% Center Coverage</span>
+                <span>50% Center Coverage</span>
               </div>
               <div class="story-footer">
                 <div class="sources">15 sources</div>
@@ -867,7 +867,7 @@
                       <div class="meter-center" style="width: 25%"></div>
                       <div class="meter-right" style="width: 35%"></div>
                     </div>
-                    <span class="left-text">40% Left Coverage</span>
+                    <span>40% Left Coverage</span>
                   </div>
                 </div>
                 <div class="stat">
@@ -878,7 +878,7 @@
                       <div class="meter-center" style="width: 15%"></div>
                       <div class="meter-right" style="width: 50%"></div>
                     </div>
-                    <span class="right-text">50% Right Interest</span>
+                    <span>50% Right Interest</span>
                   </div>
                 </div>
               </div>
@@ -922,7 +922,7 @@
                       <div class="meter-center" style="width: 45%"></div>
                       <div class="meter-right" style="width: 30%"></div>
                     </div>
-                    <span class="center-text">45% Center Coverage</span>
+                    <span>45% Center Coverage</span>
                   </div>
                 </div>
                 <div class="stat">
@@ -933,7 +933,7 @@
                       <div class="meter-center" style="width: 20%"></div>
                       <div class="meter-right" style="width: 12%"></div>
                     </div>
-                    <span class="left-text">68% Left Interest</span>
+                    <span>68% Left Interest</span>
                   </div>
                 </div>
               </div>
@@ -977,7 +977,7 @@
                       <div class="meter-center" style="width: 15%"></div>
                       <div class="meter-right" style="width: 65%"></div>
                     </div>
-                    <span class="right-text">65% Right Coverage</span>
+                    <span>65% Right Coverage</span>
                   </div>
                 </div>
                 <div class="stat">
@@ -988,7 +988,7 @@
                       <div class="meter-center" style="width: 58%"></div>
                       <div class="meter-right" style="width: 20%"></div>
                     </div>
-                    <span class="center-text">58% Center Interest</span>
+                    <span>58% Center Interest</span>
                   </div>
                 </div>
               </div>
