@@ -443,7 +443,8 @@
 .politicians-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 24px;
+  margin-bottom: 30px;
 }
 
 @media (min-width: 640px) {
@@ -452,11 +453,8 @@
   }
 }
 
-@media (min-width: 1024px) {
-  .politicians-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+/* Remove the 3-column layout for larger screens */
+/* Keep it at 2 columns even on large screens */
 
 .politician-card {
   display: flex;
@@ -465,30 +463,45 @@
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  border: 3px solid white;
 }
 
 @media (min-width: 640px) {
   .politician-card {
     flex-direction: row;
+    height: 300px; /* Fixed height for consistent cards */
+    align-items: stretch; /* Ensure children stretch to full height */
   }
 }
 
 .politician-image {
   width: 100%;
-  height: 150px;
+  height: 200px;
   object-fit: cover;
 }
 
 @media (min-width: 640px) {
   .politician-image {
-    width: 150px;
+    width: 50%; /* Exactly half of the card */
     height: 100%;
+    object-fit: cover;
   }
 }
 
 .politician-details {
-  padding: 16px;
-  flex-grow: 1;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  .politician-details {
+    width: 50%; /* Exactly half of the card */
+    overflow-y: auto; /* Allow scrolling if content is too long */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the content */
+  }
 }
 
 .politician-details h3 {
@@ -506,7 +519,7 @@
 .politician-stats {
   display: flex;
   gap: 16px;
-  margin: 12px 0;
+  margin: 10px 0;
 }
 
 .stat {
@@ -527,7 +540,7 @@
 .politician-bias {
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
+  margin: 10px 0;
 }
 
 .bias-label {
@@ -603,10 +616,12 @@
 }
 
 .issue-card.large {
-  background-color: white;
+  background-color: transparent;
+  border: 3px solid white;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   overflow: hidden;
+  margin-bottom: 10px;
 }
 
 .issue-header {
@@ -800,7 +815,9 @@
     background-color: transparent;
   }
   
-  .event-card.large {
+  .event-card.large,
+  .politician-card,
+  .issue-card.large {
     background-color: transparent;
     border-color: #374151;
   }

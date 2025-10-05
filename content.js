@@ -656,7 +656,7 @@
         
         <div class="politicians-grid">
           <div class="politician-card">
-            <img src="https://via.placeholder.com/150" alt="Mark Rutte" class="politician-image">
+            <img src="https://via.placeholder.com/300x300" alt="Mark Rutte" class="politician-image">
             <div class="politician-details">
               <h3>Mark Rutte</h3>
               <p class="politician-position">Prime Minister</p>
@@ -683,7 +683,7 @@
           </div>
           
           <div class="politician-card">
-            <img src="https://via.placeholder.com/150" alt="Sigrid Kaag" class="politician-image">
+            <img src="https://via.placeholder.com/300x300" alt="Sigrid Kaag" class="politician-image">
             <div class="politician-details">
               <h3>Sigrid Kaag</h3>
               <p class="politician-position">Minister of Finance</p>
@@ -710,7 +710,7 @@
           </div>
           
           <div class="politician-card">
-            <img src="https://via.placeholder.com/150" alt="Geert Wilders" class="politician-image">
+            <img src="https://via.placeholder.com/300x300" alt="Geert Wilders" class="politician-image">
             <div class="politician-details">
               <h3>Geert Wilders</h3>
               <p class="politician-position">Party Leader</p>
@@ -737,7 +737,7 @@
           </div>
           
           <div class="politician-card">
-            <img src="https://via.placeholder.com/150" alt="Jesse Klaver" class="politician-image">
+            <img src="https://via.placeholder.com/300x300" alt="Jesse Klaver" class="politician-image">
             <div class="politician-details">
               <h3>Jesse Klaver</h3>
               <p class="politician-position">Party Leader</p>
@@ -764,7 +764,7 @@
           </div>
           
           <div class="politician-card">
-            <img src="https://via.placeholder.com/150" alt="Wopke Hoekstra" class="politician-image">
+            <img src="https://via.placeholder.com/300x300" alt="Wopke Hoekstra" class="politician-image">
             <div class="politician-details">
               <h3>Wopke Hoekstra</h3>
               <p class="politician-position">Party Leader</p>
@@ -791,7 +791,7 @@
           </div>
           
           <div class="politician-card">
-            <img src="https://via.placeholder.com/150" alt="Lilian Marijnissen" class="politician-image">
+            <img src="https://via.placeholder.com/300x300" alt="Lilian Marijnissen" class="politician-image">
             <div class="politician-details">
               <h3>Lilian Marijnissen</h3>
               <p class="politician-position">Party Leader</p>
