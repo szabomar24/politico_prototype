@@ -822,13 +822,14 @@
 }
 
 .coverage-meter.large {
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 
-.coverage-meter.large h3 {
-  margin-top: 0;
-  margin-bottom: 12px;
-  font-size: 18px;
+.coverage-meter.large span {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #6b7280;
 }
 
 .meter-labels {
@@ -840,10 +841,7 @@
 }
 
 /* Media Analysis Grid */
-.media-analysis-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
+.media-analysis-card.full-width {
   margin-bottom: 24px;
 }
 
