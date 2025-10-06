@@ -783,7 +783,7 @@
 
 .position-header h3 {
   margin: 8px 0 0 0;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
 }
 
@@ -842,7 +842,7 @@
 .timeline-content h3 {
   margin-top: 0;
   margin-bottom: 8px;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .timeline-content p {
@@ -902,7 +902,7 @@ img {
 .media-analysis-card h3 {
   margin-top: 0;
   margin-bottom: 16px;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
 }
 
@@ -977,7 +977,7 @@ img {
 .media-analysis-insight h3 {
   margin-top: 0;
   margin-bottom: 12px;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
 }
 
@@ -1463,6 +1463,7 @@ img {
   margin: 0;
   padding: 0;
   border: none;
+  font-size: 24px;
 }
 
 .ai-icon {
