@@ -1283,6 +1283,240 @@
     }
   }
   
+  // Function to display a detailed issue page
+  async function displayIssueDetail(container, location, issueTitle) {
+    log(`Displaying detailed page for issue: ${issueTitle}`);
+    
+    try {
+      // Get URL for issue cover image
+      let coverImageUrl;
+      if (issueTitle === "Housing Crisis") {
+        coverImageUrl = getExtensionResourceUrl('media/housing_crisis.webp');
+      } else if (issueTitle === "Climate Policy") {
+        coverImageUrl = getExtensionResourceUrl('media/climate_policy.jpg');
+      } else if (issueTitle === "Immigration Reform") {
+        coverImageUrl = getExtensionResourceUrl('media/immigration_reform.jpg');
+      } else {
+        coverImageUrl = 'https://via.placeholder.com/800x400?text=Issue+Image';
+      }
+      
+      // Try to preload the image
+      const coverImage = await preloadImage(coverImageUrl).catch(() => coverImageUrl);
+      
+      if (issueTitle === "Housing Crisis") {
+        container.innerHTML = `
+          <div class="issue-detail">
+            <div class="issue-detail-header">
+              <button class="back-button">← Back to Issues</button>
+              <div class="issue-title-container">
+                <h1>Housing Crisis</h1>
+                <div class="issue-trend trending-up">↑ 24%</div>
+              </div>
+              <p class="issue-subtitle">A comprehensive analysis of the housing shortage in the Netherlands</p>
+            </div>
+            
+            <div class="issue-hero-image">
+              <img src="${coverImage}" alt="Housing Crisis in the Netherlands">
+            </div>
+            
+            <div class="issue-detail-content">
+              <div class="issue-detail-section">
+                <div class="video-header">
+                  <h2>Overview</h2>
+                  <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI Generated" class="ai-icon">
+                </div>
+                <p>The Netherlands is facing one of its most severe housing crises in recent history. Housing shortages and affordability concerns continue to be a major political issue across the country, with particular impact in urban areas like Amsterdam and Utrecht. The crisis affects various segments of the population, from students to middle-income families, and has become a key political issue.</p>
+                <p>The housing shortage is estimated at approximately 330,000 homes nationwide, with projections suggesting this number could grow to 400,000 by 2030 without significant intervention. Housing prices have increased by over 60% in the past decade, while rental prices in the private sector have seen similar increases.</p>
+              </div>
+              
+              <div class="issue-detail-section">
+                <div class="video-header">
+                  <h2>Key Statistics</h2>
+                  <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI Generated" class="ai-icon">
+                </div>
+                <div class="issue-stats-grid">
+                  <div class="issue-stat-card">
+                    <div class="stat-number">330,000</div>
+                    <div class="stat-description">Current housing shortage</div>
+                  </div>
+                  <div class="issue-stat-card">
+                    <div class="stat-number">+60%</div>
+                    <div class="stat-description">Housing price increase in last decade</div>
+                  </div>
+                  <div class="issue-stat-card">
+                    <div class="stat-number">10+ years</div>
+                    <div class="stat-description">Average wait time for social housing</div>
+                  </div>
+                  <div class="issue-stat-card">
+                    <div class="stat-number">35%</div>
+                    <div class="stat-description">Of income spent on housing (average)</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="issue-detail-section">
+                <div class="video-header">
+                  <h2>Political Positions</h2>
+                  <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI Generated" class="ai-icon">
+                </div>
+                <div class="position-spectrum detailed">
+                  <div class="position left">
+                    <span class="position-label">Left</span>
+                    <h3>Increase Social Housing</h3>
+                    <p>Left-leaning parties advocate for significant government investment in social housing, implementing strict rent controls, and limiting the influence of private investors in the housing market.</p>
+                    <p>Key proposals include:</p>
+                    <ul>
+                      <li>Building 100,000 new social housing units per year</li>
+                      <li>Implementing national rent caps</li>
+                      <li>Restricting buy-to-let investments</li>
+                      <li>Increasing taxes on multiple property ownership</li>
+                    </ul>
+                  </div>
+                  <div class="position center">
+                    <span class="position-label">Center</span>
+                    <h3>Mixed Approach</h3>
+                    <p>Centrist parties favor a balanced approach combining market incentives with targeted government intervention and subsidies for specific groups.</p>
+                    <p>Key proposals include:</p>
+                    <ul>
+                      <li>Public-private partnerships for housing development</li>
+                      <li>Targeted subsidies for first-time buyers</li>
+                      <li>Streamlining building permit processes</li>
+                      <li>Moderate expansion of social housing stock</li>
+                    </ul>
+                  </div>
+                  <div class="position right">
+                    <span class="position-label">Right</span>
+                    <h3>Market Solutions</h3>
+                    <p>Right-leaning parties emphasize reducing regulations to stimulate private sector development, arguing that market forces will eventually correct the housing shortage.</p>
+                    <p>Key proposals include:</p>
+                    <ul>
+                      <li>Relaxing zoning restrictions</li>
+                      <li>Tax incentives for developers</li>
+                      <li>Reducing environmental regulations for new construction</li>
+                      <li>Privatizing portions of the social housing sector</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="issue-detail-section">
+                <div class="video-header">
+                  <h2>Recent Developments</h2>
+                  <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI Generated" class="ai-icon">
+                </div>
+                <div class="timeline">
+                  <div class="timeline-item">
+                    <div class="timeline-date">September 2025</div>
+                    <div class="timeline-content">
+                      <h3>National Housing Accord</h3>
+                      <p>The government announced a new National Housing Accord aimed at building 900,000 new homes by 2030, with specific targets for affordable and social housing units.</p>
+                    </div>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-date">July 2025</div>
+                    <div class="timeline-content">
+                      <h3>Rent Control Legislation</h3>
+                      <p>Parliament passed controversial legislation extending rent control measures to more segments of the private rental market in major cities.</p>
+                    </div>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-date">May 2025</div>
+                    <div class="timeline-content">
+                      <h3>Housing Protests</h3>
+                      <p>Major demonstrations took place in Amsterdam, Rotterdam, and Utrecht, with protesters demanding immediate government action on the housing crisis.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="issue-detail-section">
+                <div class="video-header">
+                  <h2>Media Coverage Analysis</h2>
+                  <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI Generated" class="ai-icon">
+                </div>
+                <div class="coverage-analysis">
+                  <div class="coverage-meter large">
+                    <h3>Political Leaning of Coverage</h3>
+                    <div class="meter-container">
+                      <div class="meter-left" style="width: 30%"></div>
+                      <div class="meter-center" style="width: 30%"></div>
+                      <div class="meter-right" style="width: 40%"></div>
+                    </div>
+                    <div class="meter-labels">
+                      <span>Left</span>
+                      <span>Center</span>
+                      <span>Right</span>
+                    </div>
+                  </div>
+                  <p>Media coverage of the housing crisis tends to reflect political divisions, with left-leaning outlets emphasizing social inequality aspects and right-leaning sources focusing on regulatory barriers to development.</p>
+                  <div class="source-list">
+                    <h3>Top Sources Covering This Issue</h3>
+                    <ul>
+                      <li>De Volkskrant (18 articles)</li>
+                      <li>NRC Handelsblad (15 articles)</li>
+                      <li>RTL Nieuws (12 articles)</li>
+                      <li>NOS (10 articles)</li>
+                      <li>Het Financieele Dagblad (9 articles)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        // Add event listener to the back button
+        const backButton = container.querySelector('.back-button');
+        if (backButton) {
+          backButton.addEventListener('click', () => {
+            // Go back to the issues tab
+            loadTabContent('Issues', location);
+          });
+        }
+      } else {
+        // For other issues, show a "coming soon" message
+        container.innerHTML = `
+          <div class="issue-detail">
+            <div class="issue-detail-header">
+              <button class="back-button">← Back to Issues</button>
+              <h1>Issue Detail Coming Soon</h1>
+            </div>
+            <div class="issue-detail-content">
+              <p>Detailed information for this issue is under development.</p>
+            </div>
+          </div>
+        `;
+        
+        // Add event listener to the back button
+        const backButton = container.querySelector('.back-button');
+        if (backButton) {
+          backButton.addEventListener('click', () => {
+            // Go back to the issues tab
+            loadTabContent('Issues', location);
+          });
+        }
+      }
+    } catch (error) {
+      logError(`Error displaying issue detail: ${error.message}`);
+      container.innerHTML = `
+        <div class="error-message">
+          <h2>Error Loading Issue Detail</h2>
+          <p>Sorry, there was a problem loading the issue details. Please try again later.</p>
+          <button class="back-button">← Back to Issues</button>
+        </div>
+      `;
+      
+      // Add event listener to the back button
+      const backButton = container.querySelector('.back-button');
+      if (backButton) {
+        backButton.addEventListener('click', () => {
+          // Go back to the issues tab
+          loadTabContent('Issues', location);
+        });
+      }
+    }
+  }
+
   // Function to load the Issues tab content
   function loadIssuesTabContent(container, location) {
     container.innerHTML = `
@@ -1486,6 +1720,19 @@
         </div>
       </div>
     `;
+    
+    // Add event listeners to the Read More buttons
+    const readMoreButtons = container.querySelectorAll('.read-more-btn');
+    readMoreButtons.forEach((button, index) => {
+      button.addEventListener('click', () => {
+        // Get the issue title from the parent card
+        const issueCard = button.closest('.issue-card');
+        const issueTitle = issueCard.querySelector('.issue-title h3').textContent;
+        
+        // Display the detailed issue page
+        displayIssueDetail(container, location, issueTitle);
+      });
+    });
   }
   
   // Function to restore original content
