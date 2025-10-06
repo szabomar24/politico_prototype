@@ -640,6 +640,17 @@
   border-bottom: 1px solid #e5e7eb;
 }
 
+.issue-title {
+  display: flex;
+  align-items: center;
+}
+
+.issue-title h3 {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
 .issue-header h3 {
   font-size: 18px;
   font-weight: 600;

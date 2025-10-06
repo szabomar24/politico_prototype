@@ -1298,7 +1298,10 @@
         <div class="issues-grid">
           <div class="issue-card large">
             <div class="issue-header">
-              <h3>Housing Crisis</h3>
+              <div class="issue-title">
+                <h3>Housing Crisis</h3>
+                <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI Generated" class="ai-icon">
+              </div>
               <div class="issue-trend trending-up">↑ 24%</div>
             </div>
             <div class="issue-image">
@@ -1356,7 +1359,10 @@
           
           <div class="issue-card large">
             <div class="issue-header">
-              <h3>Climate Policy</h3>
+              <div class="issue-title">
+                <h3>Climate Policy</h3>
+                <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI Generated" class="ai-icon">
+              </div>
               <div class="issue-trend trending-up">↑ 12%</div>
             </div>
             <div class="issue-image">
@@ -1414,7 +1420,10 @@
           
           <div class="issue-card large">
             <div class="issue-header">
-              <h3>Immigration Reform</h3>
+              <div class="issue-title">
+                <h3>Immigration Reform</h3>
+                <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI Generated" class="ai-icon">
+              </div>
               <div class="issue-trend trending-down">↓ 8%</div>
             </div>
             <div class="issue-image">
