@@ -749,30 +749,59 @@
   color: #6b7280;
 }
 
-.position-spectrum.detailed {
-  display: flex;
-  flex-direction: column;
+/* Position cards */
+.positions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 24px;
+  margin-top: 16px;
 }
 
-.position-spectrum.detailed .position {
-  padding: 16px;
+.position-card {
+  background-color: rgba(243, 244, 246, 0.05);
   border-radius: 8px;
-  margin-bottom: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 }
 
-.position-spectrum.detailed .position h3 {
-  margin-top: 8px;
-  margin-bottom: 12px;
+.position-card.left {
+  border-top: 3px solid #ef4444;
+}
+
+.position-card.center {
+  border-top: 3px solid #ffffff;
+}
+
+.position-card.right {
+  border-top: 3px solid #3b82f6;
+}
+
+.position-header {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.position-header h3 {
+  margin: 8px 0 0 0;
   font-size: 18px;
+  font-weight: 600;
 }
 
-.position-spectrum.detailed .position ul {
+.position-content {
+  padding: 16px;
+}
+
+.position-content p {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.position-content ul {
   margin-top: 8px;
   padding-left: 20px;
 }
 
-.position-spectrum.detailed .position li {
+.position-content li {
   margin-bottom: 6px;
 }
 
@@ -823,6 +852,12 @@
 
 .coverage-meter.large {
   margin-bottom: 12px;
+}
+
+/* Make sure all images are visible */
+img {
+  display: inline-block;
+  max-width: 100%;
 }
 
 /* Media analysis card styles */
@@ -1435,6 +1470,7 @@
   height: 24px;
   margin-left: 10px;
   opacity: 0.9;
+  display: inline-block;
 }
 
 .video-container {
@@ -1445,11 +1481,11 @@
   background-color: #000000;
   border-radius: 8px;
   height: 320px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  position: relative;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
@@ -1478,9 +1514,10 @@
   width: 60px;
   height: 60px;
   opacity: 0.9;
+  position: absolute;
+  z-index: 10;
+  display: block;
   transition: all 0.2s;
-  position: relative;
-  z-index: 2;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 50%;
@@ -1802,9 +1839,18 @@
   
   .media-analysis-card,
   .media-analysis-insight,
-  .media-source-card {
+  .media-source-card,
+  .position-card {
     background-color: rgba(31, 41, 55, 0.3);
     box-shadow: 1px 3px 5px rgba(255, 255, 255, 0.05);
+  }
+  
+  .position-card.center {
+    border-top-color: #d1d5db;
+  }
+  
+  .position-header {
+    border-bottom-color: #374151;
   }
   
   .media-analysis-card.full-width .coverage-meter span {

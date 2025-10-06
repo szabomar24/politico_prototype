@@ -1366,42 +1366,56 @@
                   <h2>Political Positions</h2>
                   <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI Generated" class="ai-icon">
                 </div>
-                <div class="position-spectrum detailed">
-                  <div class="position left">
-                    <span class="position-label">Left</span>
-                    <h3>Increase Social Housing</h3>
-                    <p>Left-leaning parties advocate for significant government investment in social housing, implementing strict rent controls, and limiting the influence of private investors in the housing market.</p>
-                    <p>Key proposals include:</p>
-                    <ul>
-                      <li>Building 100,000 new social housing units per year</li>
-                      <li>Implementing national rent caps</li>
-                      <li>Restricting buy-to-let investments</li>
-                      <li>Increasing taxes on multiple property ownership</li>
-                    </ul>
+                <div class="positions-grid">
+                  <div class="position-card left">
+                    <div class="position-header">
+                      <span class="position-label">Left</span>
+                      <h3>Increase Social Housing</h3>
+                    </div>
+                    <div class="position-content">
+                      <p>Left-leaning parties advocate for significant government investment in social housing, implementing strict rent controls, and limiting the influence of private investors in the housing market.</p>
+                      <p>Key proposals include:</p>
+                      <ul>
+                        <li>Building 100,000 new social housing units per year</li>
+                        <li>Implementing national rent caps</li>
+                        <li>Restricting buy-to-let investments</li>
+                        <li>Increasing taxes on multiple property ownership</li>
+                      </ul>
+                    </div>
                   </div>
-                  <div class="position center">
-                    <span class="position-label">Center</span>
-                    <h3>Mixed Approach</h3>
-                    <p>Centrist parties favor a balanced approach combining market incentives with targeted government intervention and subsidies for specific groups.</p>
-                    <p>Key proposals include:</p>
-                    <ul>
-                      <li>Public-private partnerships for housing development</li>
-                      <li>Targeted subsidies for first-time buyers</li>
-                      <li>Streamlining building permit processes</li>
-                      <li>Moderate expansion of social housing stock</li>
-                    </ul>
+                  
+                  <div class="position-card center">
+                    <div class="position-header">
+                      <span class="position-label">Center</span>
+                      <h3>Mixed Approach</h3>
+                    </div>
+                    <div class="position-content">
+                      <p>Centrist parties favor a balanced approach combining market incentives with targeted government intervention and subsidies for specific groups.</p>
+                      <p>Key proposals include:</p>
+                      <ul>
+                        <li>Public-private partnerships for housing development</li>
+                        <li>Targeted subsidies for first-time buyers</li>
+                        <li>Streamlining building permit processes</li>
+                        <li>Moderate expansion of social housing stock</li>
+                      </ul>
+                    </div>
                   </div>
-                  <div class="position right">
-                    <span class="position-label">Right</span>
-                    <h3>Market Solutions</h3>
-                    <p>Right-leaning parties emphasize reducing regulations to stimulate private sector development, arguing that market forces will eventually correct the housing shortage.</p>
-                    <p>Key proposals include:</p>
-                    <ul>
-                      <li>Relaxing zoning restrictions</li>
-                      <li>Tax incentives for developers</li>
-                      <li>Reducing environmental regulations for new construction</li>
-                      <li>Privatizing portions of the social housing sector</li>
-                    </ul>
+                  
+                  <div class="position-card right">
+                    <div class="position-header">
+                      <span class="position-label">Right</span>
+                      <h3>Market Solutions</h3>
+                    </div>
+                    <div class="position-content">
+                      <p>Right-leaning parties emphasize reducing regulations to stimulate private sector development, arguing that market forces will eventually correct the housing shortage.</p>
+                      <p>Key proposals include:</p>
+                      <ul>
+                        <li>Relaxing zoning restrictions</li>
+                        <li>Tax incentives for developers</li>
+                        <li>Reducing environmental regulations for new construction</li>
+                        <li>Privatizing portions of the social housing sector</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
