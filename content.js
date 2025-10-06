@@ -1301,6 +1301,9 @@
               <h3>Housing Crisis</h3>
               <div class="issue-trend trending-up">↑ 24%</div>
             </div>
+            <div class="issue-image">
+              <img src="${getExtensionResourceUrl('media/housing_crisis.webp')}" alt="Housing Crisis" class="issue-cover-image">
+            </div>
             <div class="issue-content">
               <p class="issue-description">Housing shortages and affordability concerns continue to be a major political issue across the Netherlands, with particular impact in urban areas like Amsterdam and Utrecht.</p>
               <div class="issue-stats">
@@ -1308,9 +1311,9 @@
                   <span class="stat-label">Media Coverage</span>
                   <div class="coverage-meter">
                     <div class="meter-container">
-                      <div class="meter-left" style="width: 40%"></div>
-                      <div class="meter-center" style="width: 25%"></div>
-                      <div class="meter-right" style="width: 35%"></div>
+                      <div class="meter-left" style="width: 30%"></div>
+                      <div class="meter-center" style="width: 30%"></div>
+                      <div class="meter-right" style="width: 40%"></div>
                     </div>
                     <span>40% Left Coverage</span>
                   </div>
@@ -1319,9 +1322,9 @@
                   <span class="stat-label">Public Interest</span>
                   <div class="coverage-meter">
                     <div class="meter-container">
-                      <div class="meter-left" style="width: 35%"></div>
-                      <div class="meter-center" style="width: 15%"></div>
-                      <div class="meter-right" style="width: 50%"></div>
+                      <div class="meter-left" style="width: 30%"></div>
+                      <div class="meter-center" style="width: 30%"></div>
+                      <div class="meter-right" style="width: 40%"></div>
                     </div>
                     <span>50% Right Interest</span>
                   </div>
@@ -1346,7 +1349,7 @@
               </div>
               <div class="issue-sources">
                 <span>18 sources</span>
-                <button class="view-sources-btn">View Sources</button>
+                <button class="read-more-btn">Read More</button>
               </div>
             </div>
           </div>
@@ -1356,6 +1359,9 @@
               <h3>Climate Policy</h3>
               <div class="issue-trend trending-up">↑ 12%</div>
             </div>
+            <div class="issue-image">
+              <img src="${getExtensionResourceUrl('media/climate_policy.jpg')}" alt="Climate Policy" class="issue-cover-image">
+            </div>
             <div class="issue-content">
               <p class="issue-description">Debates over emissions targets and agricultural regulations are intensifying as the EU pushes for stricter climate measures, with significant implications for Dutch industry and agriculture.</p>
               <div class="issue-stats">
@@ -1363,9 +1369,9 @@
                   <span class="stat-label">Media Coverage</span>
                   <div class="coverage-meter">
                     <div class="meter-container">
-                      <div class="meter-left" style="width: 25%"></div>
-                      <div class="meter-center" style="width: 45%"></div>
-                      <div class="meter-right" style="width: 30%"></div>
+                      <div class="meter-left" style="width: 30%"></div>
+                      <div class="meter-center" style="width: 30%"></div>
+                      <div class="meter-right" style="width: 40%"></div>
                     </div>
                     <span>45% Center Coverage</span>
                   </div>
@@ -1374,9 +1380,9 @@
                   <span class="stat-label">Public Interest</span>
                   <div class="coverage-meter">
                     <div class="meter-container">
-                      <div class="meter-left" style="width: 68%"></div>
-                      <div class="meter-center" style="width: 20%"></div>
-                      <div class="meter-right" style="width: 12%"></div>
+                      <div class="meter-left" style="width: 30%"></div>
+                      <div class="meter-center" style="width: 30%"></div>
+                      <div class="meter-right" style="width: 40%"></div>
                     </div>
                     <span>68% Left Interest</span>
                   </div>
@@ -1401,7 +1407,7 @@
               </div>
               <div class="issue-sources">
                 <span>14 sources</span>
-                <button class="view-sources-btn">View Sources</button>
+                <button class="read-more-btn">Read More</button>
               </div>
             </div>
           </div>
@@ -1411,6 +1417,9 @@
               <h3>Immigration Reform</h3>
               <div class="issue-trend trending-down">↓ 8%</div>
             </div>
+            <div class="issue-image">
+              <img src="${getExtensionResourceUrl('media/immigration_reform.jpg')}" alt="Immigration Reform" class="issue-cover-image">
+            </div>
             <div class="issue-content">
               <p class="issue-description">Discussions about immigration policy and integration continue, with parties divided on approach and implementation of asylum procedures and integration programs.</p>
               <div class="issue-stats">
@@ -1418,9 +1427,9 @@
                   <span class="stat-label">Media Coverage</span>
                   <div class="coverage-meter">
                     <div class="meter-container">
-                      <div class="meter-left" style="width: 20%"></div>
-                      <div class="meter-center" style="width: 15%"></div>
-                      <div class="meter-right" style="width: 65%"></div>
+                      <div class="meter-left" style="width: 30%"></div>
+                      <div class="meter-center" style="width: 30%"></div>
+                      <div class="meter-right" style="width: 40%"></div>
                     </div>
                     <span>65% Right Coverage</span>
                   </div>
@@ -1429,9 +1438,9 @@
                   <span class="stat-label">Public Interest</span>
                   <div class="coverage-meter">
                     <div class="meter-container">
-                      <div class="meter-left" style="width: 22%"></div>
-                      <div class="meter-center" style="width: 58%"></div>
-                      <div class="meter-right" style="width: 20%"></div>
+                      <div class="meter-left" style="width: 30%"></div>
+                      <div class="meter-center" style="width: 30%"></div>
+                      <div class="meter-right" style="width: 40%"></div>
                     </div>
                     <span>58% Center Interest</span>
                   </div>
@@ -1456,7 +1465,7 @@
               </div>
               <div class="issue-sources">
                 <span>12 sources</span>
-                <button class="view-sources-btn">View Sources</button>
+                <button class="read-more-btn">Read More</button>
               </div>
             </div>
           </div>

@@ -612,7 +612,24 @@
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  margin-bottom: 24px;
+}
+
+.issue-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.issue-cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.issue-card:hover .issue-cover-image {
+  transform: scale(1.05);
 }
 
 .issue-header {
@@ -726,6 +743,23 @@
   border: none;
   cursor: pointer;
   padding: 0;
+}
+
+.read-more-btn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.read-more-btn:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
 }
 
 /* Bias indicators */
@@ -1313,6 +1347,18 @@
   .featured-story {
     background-color: transparent;
     box-shadow: 1px 3px 5px rgba(255, 255, 255, 0.05);
+  }
+  
+  .read-more-btn {
+    background-color: #3b82f6;
+  }
+  
+  .read-more-btn:hover {
+    background-color: #60a5fa;
+  }
+  
+  .issue-header {
+    border-color: #374151;
   }
   
   .event-date {
