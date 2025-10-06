@@ -1149,8 +1149,8 @@
                     <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI Generated" class="ai-icon">
                   </div>
                   <div class="video-container">
-                    <div class="video-placeholder">
-                      <img src="${getExtensionResourceUrl('media/play-button.png')}" alt="Play" class="play-button">
+                    <div class="video-placeholder" style="background-image: url('${getExtensionResourceUrl('media/dick-schoof-video-cover.jpg')}'); background-size: cover; background-position: center;">
+                      <img src="${getExtensionResourceUrl('media/play-button-arrowhead.png')}" alt="Play" class="play-button">
                     </div>
                   </div>
                 </div>
