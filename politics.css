@@ -976,6 +976,13 @@
   border-bottom: 1px solid #e5e7eb;
 }
 
+/* Remove bottom margin and border when h2 is inside video-header */
+.video-header h2 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
 /* Video Summary styles */
 .video-header {
   display: flex;
@@ -993,9 +1000,10 @@
 }
 
 .ai-icon {
-  width: 32px;
-  height: 32px;
-  margin-left: 12px;
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+  opacity: 0.9;
 }
 
 .video-container {

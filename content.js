@@ -1156,14 +1156,20 @@
                 </div>
                 
                 <div class="profile-section">
-                  <h2>Biography</h2>
+                  <div class="video-header">
+                    <h2>Biography</h2>
+                    <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI Generated" class="ai-icon">
+                  </div>
                   <p>Dick Schoof is a Dutch politician and civil servant who became Prime Minister of the Netherlands in 2024. Before his appointment as Prime Minister, Schoof served as the head of the Dutch General Intelligence and Security Service (AIVD).</p>
                   <p>With a background in national security and public administration, Schoof has held various high-ranking positions within the Dutch government. His leadership style is characterized by pragmatism and a focus on security issues.</p>
                   <p>As Prime Minister, he leads a coalition government and has prioritized economic stability, national security, and European cooperation in his policy agenda.</p>
                 </div>
                 
                 <div class="profile-section">
-                  <h2>Key Policy Positions</h2>
+                  <div class="video-header">
+                    <h2>Key Policy Positions</h2>
+                    <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI Generated" class="ai-icon">
+                  </div>
                   <div class="policy-position">
                     <h3>Economy</h3>
                     <div class="position-meter">
