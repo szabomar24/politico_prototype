@@ -335,7 +335,10 @@
           <div class="chatbot-avatar">
             <span>F</span>
           </div>
-          <div class="chatbot-title">Frank</div>
+          <div class="chatbot-title">
+            Ask Frank
+            <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI" class="chatbot-ai-icon">
+          </div>
           <button class="chatbot-toggle">
             <span class="minimize">−</span>
             <span class="maximize" style="display: none;">+</span>
