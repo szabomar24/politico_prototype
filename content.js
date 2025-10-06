@@ -240,20 +240,20 @@
     politicsContainer.innerHTML = `
       <article class="max-w-screen-wide mx-auto max-md:mx-[0.6rem]">
         <div class="hideElementSiteWide flex flex-col rounded-lg px-[0.9rem] py-[6.3rem] mx-auto items-center justify-center gap-[1.3rem] w-max pt-[1.3rem] pb-[2.5rem] tablet:pt-[3.8rem] tablet:pb-[7.5rem] desktop:pt-[6.3rem] desktop:pb-[10rem] leading-tightest">
-          <h1 class="text-32 font-bold text-center max-w-5xl">Choose a location to create a custom politics feed</h1>
-          <span class="text-18 font-normal text-center max-w-3xl">Get updates on local political news, events, and figures relevant to your area</span>
+          <h1 class="text-32 font-bold text-center max-w-5xl text-white">Choose a location to create a custom politics feed</h1>
+          <span class="text-18 font-normal text-center max-w-3xl text-white">Get updates on local political news, events, and figures relevant to your area</span>
           
           <div class="flex w-full" style="max-width: 26.25rem;">
-            <div class="w-full text-14 border border-ground-black dark:border-dark-ground-black relative">
-              <input id="politics-location-input" placeholder="Enter your city's name" autocomplete="on" class="w-full py-[0.6rem] text-16 border-none focus:underline focus:underline-offset-1 dark:bg-ground-black placeholder-[var(--gray-200)] dark:placeholder-[var(--gray-200)] dark:text-light-primary bg-light-primary text-dark-primary" type="text" value="Amsterdam, Netherlands" name="searchLocation" style="box-shadow: none;">
-              <div class="flex flex-col gap-[6px] tablet:gap-[8px] overflow-scroll absolute bg-light-light dark:bg-[var(--gray-100)] w-full box-content shadow border-l border-b border-r border-dark-primary false location_scroll-bar__YQSyq" style="max-height: 6.25rem; left: -1px;"></div>
+            <div class="w-full text-14 relative politics-search-container">
+              <input id="politics-location-input" placeholder="Enter your city's name" autocomplete="on" class="politics-location-search w-full py-[0.6rem] text-16 focus:outline-none" type="text" value="Amsterdam, Netherlands" name="searchLocation">
+              <div class="flex flex-col gap-[6px] tablet:gap-[8px] overflow-scroll absolute politics-location-dropdown w-full box-content" style="max-height: 6.25rem; left: 0;"></div>
             </div>
           </div>
           
           <div class="w-full max-w-2xl">
-            <button id="set-location-btn" type="button" class="cursor-pointer bg-dark-primary dark:bg-light-primary flex justify-center py-[1.3rem] rounded-lg text-light-primary dark:text-dark-primary text-16 w-full h-[3.1rem] items-center">Set Your Location</button>
+            <button id="set-location-btn" type="button" class="politics-location-button cursor-pointer flex justify-center py-[1.3rem] rounded-lg text-16 w-full h-[3.1rem] items-center">Set Your Location</button>
             <div class="flex justify-center">
-              <button id="detect-location-btn" type="button" class="cursor-pointer flex gap-[0.6rem] mt-[0.9rem] text-14 justify-center underline font-semibold relative">Or, enable location permissions</button>
+              <button id="detect-location-btn" type="button" class="cursor-pointer flex gap-[0.6rem] mt-[0.9rem] text-14 justify-center underline font-semibold relative text-white">Or, enable location permissions</button>
             </div>
           </div>
         </div>
