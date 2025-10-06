@@ -566,11 +566,18 @@
 
 .load-more-btn {
   padding: 8px 16px;
-  background-color: #3b82f6;
-  color: white;
-  border: none;
+  background-color: transparent;
+  border: 1px solid #d1d5db;
   border-radius: 4px;
   cursor: pointer;
+  color: inherit;
+  font-size: 14px;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.load-more-btn:hover {
+  background-color: rgba(209, 213, 219, 0.1);
+  border-color: #9ca3af;
 }
 
 .story-count,
@@ -1371,6 +1378,16 @@
   
   .issue-header {
     border-color: #374151;
+  }
+  
+  .load-more-btn {
+    border-color: #4b5563;
+    color: #e5e7eb;
+  }
+  
+  .load-more-btn:hover {
+    background-color: rgba(75, 85, 99, 0.2);
+    border-color: #6b7280;
   }
   
   .event-date {
