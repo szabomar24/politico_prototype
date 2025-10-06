@@ -564,6 +564,11 @@
   margin-top: 24px;
 }
 
+/* Specific override for issues footer */
+.issues-footer {
+  margin-top: 40px;
+}
+
 .load-more-btn {
   padding: 8px 16px;
   background-color: transparent;
@@ -637,6 +642,11 @@
 
 .issue-card:hover .issue-cover-image {
   transform: scale(1.05);
+}
+
+/* Add more space after the last issue card */
+.issues-grid .issue-card.large:last-child {
+  margin-bottom: 16px;
 }
 
 .issue-header {
