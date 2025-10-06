@@ -1144,6 +1144,18 @@
               
               <div class="profile-main">
                 <div class="profile-section">
+                  <div class="video-header">
+                    <h2>Video Summary</h2>
+                    <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI Generated" class="ai-icon">
+                  </div>
+                  <div class="video-container">
+                    <div class="video-placeholder">
+                      <img src="${getExtensionResourceUrl('media/play-button.png')}" alt="Play" class="play-button">
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="profile-section">
                   <h2>Biography</h2>
                   <p>Dick Schoof is a Dutch politician and civil servant who became Prime Minister of the Netherlands in 2024. Before his appointment as Prime Minister, Schoof served as the head of the Dutch General Intelligence and Security Service (AIVD).</p>
                   <p>With a background in national security and public administration, Schoof has held various high-ranking positions within the Dutch government. His leadership style is characterized by pragmatism and a focus on security issues.</p>
@@ -1225,6 +1237,15 @@
           backButton.addEventListener('click', () => {
             // Go back to the politicians tab
             loadTabContent('Politicians', location);
+          });
+        }
+        
+        // Add event listener to the video placeholder
+        const videoPlaceholder = container.querySelector('.video-placeholder');
+        if (videoPlaceholder) {
+          videoPlaceholder.addEventListener('click', () => {
+            // For the prototype, just show an alert
+            alert('Video playback would start here in the full implementation.');
           });
         }
       } else {
