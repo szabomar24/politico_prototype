@@ -1004,7 +1004,7 @@
 .video-placeholder {
   background-color: #000000;
   border-radius: 8px;
-  height: 250px;
+  height: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1035,13 +1035,16 @@
 }
 
 .play-button {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   opacity: 0.9;
   transition: all 0.2s;
   position: relative;
   z-index: 2;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  padding: 15px;
 }
 
 .video-placeholder:hover .play-button {
@@ -1234,10 +1237,12 @@
   
   .play-button {
     filter: brightness(1.1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    background-color: rgba(255, 255, 255, 0.85);
   }
   
   .video-placeholder:hover .play-button {
     filter: brightness(1.2) drop-shadow(0 3px 6px rgba(0, 0, 0, 0.5));
+    background-color: rgba(255, 255, 255, 0.95);
   }
 }
 
