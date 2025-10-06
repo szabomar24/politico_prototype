@@ -839,23 +839,174 @@
   color: #6b7280;
 }
 
-.source-list {
-  margin-top: 24px;
+/* Media Analysis Grid */
+.media-analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
-.source-list h3 {
+.media-analysis-card {
+  background-color: rgba(243, 244, 246, 0.05);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.media-analysis-card h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Meter percentages */
+.meter-percentages {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+/* Coverage trend chart */
+.coverage-trend-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 150px;
+  margin-bottom: 8px;
+}
+
+.chart-bar {
+  width: 40px;
+  background-color: #3b82f6;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  transition: height 0.3s ease;
+}
+
+.chart-bar:hover {
+  background-color: #2563eb;
+}
+
+.chart-tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1f2937;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.chart-bar:hover .chart-tooltip {
+  opacity: 1;
+}
+
+.chart-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Media analysis insight */
+.media-analysis-insight {
+  background-color: rgba(243, 244, 246, 0.05);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.media-analysis-insight h3 {
   margin-top: 0;
   margin-bottom: 12px;
   font-size: 18px;
+  font-weight: 600;
 }
 
-.source-list ul {
-  padding-left: 20px;
-  margin-top: 8px;
+.media-analysis-insight p {
+  margin: 0;
+  line-height: 1.6;
 }
 
-.source-list li {
-  margin-bottom: 6px;
+/* Media sources grid */
+.media-sources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.media-source-card {
+  display: flex;
+  align-items: center;
+  background-color: rgba(243, 244, 246, 0.05);
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.source-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.source-icon.left {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.source-icon.center {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+}
+
+.source-icon.right {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.source-details {
+  flex: 1;
+}
+
+.source-details h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.source-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.source-stats .bias-indicator {
+  font-size: 10px;
+  padding: 2px 6px;
 }
 
 .issue-header {
@@ -949,7 +1100,7 @@
 }
 
 .position.left .position-label {
-  color: #3b82f6;
+  color: #ef4444  
 }
 
 .position.center .position-label {
@@ -957,7 +1108,7 @@
 }
 
 .position.right .position-label {
-  color: #ef4444;
+  color: #3b82f6;
 }
 
 .position p {
@@ -1635,8 +1786,33 @@
   }
   
   .timeline-content p,
-  .source-list li {
+  .media-analysis-insight p {
     color: #d1d5db;
+  }
+  
+  .media-analysis-card,
+  .media-analysis-insight,
+  .media-source-card {
+    background-color: rgba(31, 41, 55, 0.3);
+    box-shadow: 1px 3px 5px rgba(255, 255, 255, 0.05);
+  }
+  
+  .chart-bar {
+    background-color: #60a5fa;
+  }
+  
+  .chart-bar:hover {
+    background-color: #93c5fd;
+  }
+  
+  .chart-tooltip {
+    background-color: #374151;
+  }
+  
+  .meter-percentages,
+  .chart-labels,
+  .source-stats {
+    color: #9ca3af;
   }
   
   .event-date {

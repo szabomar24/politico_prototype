@@ -1340,7 +1340,6 @@
               <div class="issue-detail-section">
                 <div class="video-header">
                   <h2>Key Statistics</h2>
-                  <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI Generated" class="ai-icon">
                 </div>
                 <div class="issue-stats-grid">
                   <div class="issue-stat-card">
@@ -1410,7 +1409,6 @@
               <div class="issue-detail-section">
                 <div class="video-header">
                   <h2>Recent Developments</h2>
-                  <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI Generated" class="ai-icon">
                 </div>
                 <div class="timeline">
                   <div class="timeline-item">
@@ -1443,29 +1441,105 @@
                   <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI Generated" class="ai-icon">
                 </div>
                 <div class="coverage-analysis">
-                  <div class="coverage-meter large">
-                    <h3>Political Leaning of Coverage</h3>
-                    <div class="meter-container">
-                      <div class="meter-left" style="width: 30%"></div>
-                      <div class="meter-center" style="width: 30%"></div>
-                      <div class="meter-right" style="width: 40%"></div>
+                  <div class="media-analysis-grid">
+                    <div class="media-analysis-card">
+                      <h3>Political Leaning of Coverage</h3>
+                      <div class="coverage-meter large">
+                        <div class="meter-container">
+                          <div class="meter-left" style="width: 30%"></div>
+                          <div class="meter-center" style="width: 30%"></div>
+                          <div class="meter-right" style="width: 40%"></div>
+                        </div>
+                        <div class="meter-labels">
+                          <span>Left</span>
+                          <span>Center</span>
+                          <span>Right</span>
+                        </div>
+                      </div>
+                      <div class="meter-percentages">
+                        <span>30%</span>
+                        <span>30%</span>
+                        <span>40%</span>
+                      </div>
                     </div>
-                    <div class="meter-labels">
-                      <span>Left</span>
-                      <span>Center</span>
-                      <span>Right</span>
+                    
+                    <div class="media-analysis-card">
+                      <h3>Coverage Volume Over Time</h3>
+                      <div class="coverage-trend-chart">
+                        <div class="chart-bar" style="height: 30%"><span class="chart-tooltip">Q1: 24 articles</span></div>
+                        <div class="chart-bar" style="height: 45%"><span class="chart-tooltip">Q2: 36 articles</span></div>
+                        <div class="chart-bar" style="height: 80%"><span class="chart-tooltip">Q3: 64 articles</span></div>
+                        <div class="chart-bar" style="height: 60%"><span class="chart-tooltip">Q4: 48 articles</span></div>
+                      </div>
+                      <div class="chart-labels">
+                        <span>Q1</span>
+                        <span>Q2</span>
+                        <span>Q3</span>
+                        <span>Q4</span>
+                      </div>
                     </div>
                   </div>
-                  <p>Media coverage of the housing crisis tends to reflect political divisions, with left-leaning outlets emphasizing social inequality aspects and right-leaning sources focusing on regulatory barriers to development.</p>
-                  <div class="source-list">
-                    <h3>Top Sources Covering This Issue</h3>
-                    <ul>
-                      <li>De Volkskrant (18 articles)</li>
-                      <li>NRC Handelsblad (15 articles)</li>
-                      <li>RTL Nieuws (12 articles)</li>
-                      <li>NOS (10 articles)</li>
-                      <li>Het Financieele Dagblad (9 articles)</li>
-                    </ul>
+                  
+                  <div class="media-analysis-insight">
+                    <h3>Key Insights</h3>
+                    <p>Media coverage of the housing crisis tends to reflect political divisions, with left-leaning outlets emphasizing social inequality aspects and right-leaning sources focusing on regulatory barriers to development. Coverage peaked in Q3 2025 following major housing protests and parliamentary debates on rent control legislation.</p>
+                  </div>
+                  
+                  <div class="media-sources-grid">
+                    <div class="media-source-card">
+                      <div class="source-icon left">DV</div>
+                      <div class="source-details">
+                        <h4>De Volkskrant</h4>
+                        <div class="source-stats">
+                          <span>18 articles</span>
+                          <span class="bias-indicator left">Left-leaning</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="media-source-card">
+                      <div class="source-icon center">NRC</div>
+                      <div class="source-details">
+                        <h4>NRC Handelsblad</h4>
+                        <div class="source-stats">
+                          <span>15 articles</span>
+                          <span class="bias-indicator center">Center</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="media-source-card">
+                      <div class="source-icon right">RTL</div>
+                      <div class="source-details">
+                        <h4>RTL Nieuws</h4>
+                        <div class="source-stats">
+                          <span>12 articles</span>
+                          <span class="bias-indicator right">Right-leaning</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="media-source-card">
+                      <div class="source-icon center">NOS</div>
+                      <div class="source-details">
+                        <h4>NOS</h4>
+                        <div class="source-stats">
+                          <span>10 articles</span>
+                          <span class="bias-indicator center">Center</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="media-source-card">
+                      <div class="source-icon right">FD</div>
+                      <div class="source-details">
+                        <h4>Het Financieele Dagblad</h4>
+                        <div class="source-stats">
+                          <span>9 articles</span>
+                          <span class="bias-indicator right">Right-leaning</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
