@@ -328,6 +328,31 @@
       <div class="politics-location-content">
         <!-- Tab content will be loaded here -->
       </div>
+      
+      <!-- Chatbot Widget -->
+      <div class="chatbot-widget">
+        <div class="chatbot-header">
+          <div class="chatbot-avatar">
+            <span>F</span>
+          </div>
+          <div class="chatbot-title">Frank</div>
+          <button class="chatbot-toggle">
+            <span class="minimize">−</span>
+            <span class="maximize" style="display: none;">+</span>
+          </button>
+        </div>
+        <div class="chatbot-body">
+          <div class="chatbot-messages">
+            <div class="message bot">
+              <p>Hi, I'm Frank. I'm an AI assistant. If you have any questions about politics in ${displayLocation}, feel free to ask.</p>
+            </div>
+          </div>
+          <div class="chatbot-input">
+            <input type="text" placeholder="Type your question..." />
+            <button class="send-btn">→</button>
+          </div>
+        </div>
+      </div>
     `;
     
     // Replace main content
@@ -381,6 +406,64 @@
           logError(`Error loading initial tab: ${error.message}`);
         }
       })();
+      
+      // Chatbot toggle functionality
+      const chatbotToggle = document.querySelector('.chatbot-toggle');
+      const chatbotBody = document.querySelector('.chatbot-body');
+      const minimizeIcon = document.querySelector('.minimize');
+      const maximizeIcon = document.querySelector('.maximize');
+      
+      if (chatbotToggle && chatbotBody) {
+        chatbotToggle.addEventListener('click', () => {
+          chatbotBody.classList.toggle('hidden');
+          minimizeIcon.style.display = minimizeIcon.style.display === 'none' ? 'inline' : 'none';
+          maximizeIcon.style.display = maximizeIcon.style.display === 'none' ? 'inline' : 'none';
+        });
+      }
+      
+      // Chatbot send message functionality
+      const sendBtn = document.querySelector('.send-btn');
+      const chatInput = document.querySelector('.chatbot-input input');
+      const chatMessages = document.querySelector('.chatbot-messages');
+      
+      if (sendBtn && chatInput && chatMessages) {
+        sendBtn.addEventListener('click', () => {
+          const message = chatInput.value.trim();
+          if (message) {
+            // Add user message
+            chatMessages.innerHTML += `
+              <div class="message user">
+                <p>${message}</p>
+              </div>
+            `;
+            
+            // Clear input
+            chatInput.value = '';
+            
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // Simulate bot response after a short delay
+            setTimeout(() => {
+              chatMessages.innerHTML += `
+                <div class="message bot">
+                  <p>I'm sorry, but I'm just a prototype. I can't actually answer questions yet.</p>
+                </div>
+              `;
+              
+              // Scroll to bottom again
+              chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+          }
+        });
+        
+        // Allow pressing Enter to send message
+        chatInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            sendBtn.click();
+          }
+        });
+      }
     }, 100);
   }
   
