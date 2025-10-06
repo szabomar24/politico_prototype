@@ -1451,11 +1451,6 @@
                       </div>
                       <span>40% Right Coverage</span>
                     </div>
-                    <div class="meter-labels">
-                      <span>Left</span>
-                      <span>Center</span>
-                      <span>Right</span>
-                    </div>
                   </div>
                   
                   <div class="media-analysis-insight">

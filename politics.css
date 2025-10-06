@@ -823,6 +823,7 @@
 
 .coverage-meter.large {
   margin-bottom: 12px;
+  position: relative;
 }
 
 .coverage-meter.large span {
@@ -830,6 +831,7 @@
   margin-top: 8px;
   font-size: 14px;
   color: #6b7280;
+  text-align: right;
 }
 
 .meter-labels {
