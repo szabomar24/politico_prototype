@@ -43,30 +43,6 @@ This prototype is built using:
 - CSS3 (with modern features like backdrop-filter, flexbox, and grid)
 - Vanilla JavaScript (no frameworks)
 
-## Usage
-
-To run the prototype locally:
-
-1. Clone this repository
-2. Open the project in a modern web browser
-3. Navigate through the interface to explore the various features
-
-## Design Principles
-
-The prototype follows these design principles:
-- **Transparency**: Using glass-morphism design elements with semi-transparent backgrounds
-- **Accessibility**: High contrast text and clear visual hierarchy
-- **Consistency**: Uniform styling and interaction patterns throughout the application
-- **Responsiveness**: Adapts to different screen sizes and device types
-
-## Future Development
-
-If this were to be developed into a full application, potential enhancements would include:
-- Real data integration with political APIs and news sources
-- Actual AI-powered assistance for answering political questions
-- User accounts with personalized content and saved preferences
-- Advanced filtering and search capabilities
-
 ## License
 
 This prototype is for demonstration purposes only and is not licensed for production use or distribution.
