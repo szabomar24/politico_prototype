@@ -892,11 +892,11 @@
 }
 
 .profile-stats {
-  background-color: white;
+  background-color: transparent;
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 24px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.05);
 }
 
 .profile-stats h3 {
@@ -939,7 +939,7 @@
 }
 
 .compare-btn {
-  background-color: white;
+  background-color: transparent;
   color: #3b82f6;
   border: 1px solid #3b82f6;
   border-radius: 4px;
@@ -947,11 +947,12 @@
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 .compare-btn:hover {
-  background-color: #f0f9ff;
+  background-color: rgba(59, 130, 246, 0.05);
+  transform: translateY(-1px);
 }
 
 .profile-main {
@@ -959,11 +960,11 @@
 }
 
 .profile-section {
-  background-color: white;
+  background-color: transparent;
   border-radius: 8px;
   padding: 24px;
   margin-bottom: 24px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.05);
 }
 
 .profile-section h2 {
@@ -1171,10 +1172,14 @@
 /* Dark mode support for politician profile */
 @media (prefers-color-scheme: dark) {
   .profile-stats,
-  .profile-section,
+  .profile-section {
+    background-color: transparent;
+    box-shadow: 1px 3px 5px rgba(255, 255, 255, 0.05);
+  }
+  
   .compare-btn {
-    background-color: #1f2937;
-    border-color: #374151;
+    background-color: transparent;
+    border-color: #60a5fa;
   }
   
   .profile-header {
@@ -1204,7 +1209,8 @@
   }
   
   .compare-btn:hover {
-    background-color: #1e3a5f;
+    background-color: rgba(96, 165, 250, 0.1);
+    transform: translateY(-1px);
   }
   
   .profile-section p,
