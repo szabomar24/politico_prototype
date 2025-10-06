@@ -1031,6 +1031,26 @@
         </div>
       </div>
     `;
+    // After setting container.innerHTML in loadPoliticiansTabContent function
+    // Add this code right before the closing of the try block
+
+    // Add event listeners to profile buttons
+    const dickSchoofProfileBtn = container.querySelector('.politician-card:first-child .view-profile-btn');
+    if (dickSchoofProfileBtn) {
+    dickSchoofProfileBtn.addEventListener('click', () => {
+        // Show Dick Schoof's profile
+        displayPoliticianProfile(container, 'dick-schoof', location);
+    });
+    }
+
+    // For other politicians, show a "coming soon" message
+    const otherProfileBtns = container.querySelectorAll('.politician-card:not(:first-child) .view-profile-btn');
+    otherProfileBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Show generic profile page
+        displayPoliticianProfile(container, 'other', location);
+    });
+    });
     } catch (error) {
       logError(`Error loading politician images: ${error.message}`);
       
@@ -1059,6 +1079,180 @@
         </div>
       </div>
       `;
+    }
+  }
+  
+  // Function to display a politician profile page
+  async function displayPoliticianProfile(container, politicianId, location) {
+    // Show loading indicator
+    container.innerHTML = '<div class="loading-indicator">Loading profile...</div>';
+    
+    try {
+      // For now, we only have Dick Schoof's profile implemented
+      if (politicianId === 'dick-schoof') {
+        // Get URL for Dick Schoof's image
+        const dickSchoofImgUrl = getExtensionResourceUrl('media/dick_schoof.jpg');
+        
+        // Try to preload the image
+        const dickSchoofImg = await preloadImage(dickSchoofImgUrl)
+          .catch(() => 'https://via.placeholder.com/400x500/3b82f6/ffffff?text=Dick+Schoof');
+        
+        // Render the profile page
+        container.innerHTML = `
+          <div class="politician-profile">
+            <div class="profile-header">
+              <button class="back-button">← Back to Politicians</button>
+              <h1>Dick Schoof</h1>
+              <p class="politician-role">Prime Minister of the Netherlands</p>
+            </div>
+            
+            <div class="profile-content">
+              <div class="profile-sidebar">
+                <div class="profile-image-container">
+                  <img src="${dickSchoofImg}" alt="Dick Schoof" class="profile-image">
+                </div>
+                
+                <div class="profile-stats">
+                  <h3>Key Information</h3>
+                  <div class="profile-stat">
+                    <span class="stat-label">Political Party</span>
+                    <span class="stat-value">VVD (People's Party for Freedom and Democracy)</span>
+                  </div>
+                  <div class="profile-stat">
+                    <span class="stat-label">In Office Since</span>
+                    <span class="stat-value">2024</span>
+                  </div>
+                  <div class="profile-stat">
+                    <span class="stat-label">Previous Position</span>
+                    <span class="stat-value">Head of Intelligence Service</span>
+                  </div>
+                  <div class="profile-stat">
+                    <span class="stat-label">Born</span>
+                    <span class="stat-value">February 6, 1957</span>
+                  </div>
+                  <div class="profile-stat">
+                    <span class="stat-label">Education</span>
+                    <span class="stat-value">Utrecht University (Law)</span>
+                  </div>
+                </div>
+                
+                <div class="profile-actions">
+                  <button class="follow-btn large">Follow</button>
+                  <button class="compare-btn">Compare with Other Politicians</button>
+                </div>
+              </div>
+              
+              <div class="profile-main">
+                <div class="profile-section">
+                  <h2>Biography</h2>
+                  <p>Dick Schoof is a Dutch politician and civil servant who became Prime Minister of the Netherlands in 2024. Before his appointment as Prime Minister, Schoof served as the head of the Dutch General Intelligence and Security Service (AIVD).</p>
+                  <p>With a background in national security and public administration, Schoof has held various high-ranking positions within the Dutch government. His leadership style is characterized by pragmatism and a focus on security issues.</p>
+                  <p>As Prime Minister, he leads a coalition government and has prioritized economic stability, national security, and European cooperation in his policy agenda.</p>
+                </div>
+                
+                <div class="profile-section">
+                  <h2>Key Policy Positions</h2>
+                  <div class="policy-position">
+                    <h3>Economy</h3>
+                    <div class="position-meter">
+                      <div class="meter-container">
+                        <div class="meter-fill" style="width: 65%"></div>
+                      </div>
+                      <span>Center-Right</span>
+                    </div>
+                    <p>Advocates for fiscal discipline, tax cuts for businesses, and reduced government regulation to stimulate economic growth.</p>
+                  </div>
+                  
+                  <div class="policy-position">
+                    <h3>Immigration</h3>
+                    <div class="position-meter">
+                      <div class="meter-container">
+                        <div class="meter-fill" style="width: 70%"></div>
+                      </div>
+                      <span>Center-Right</span>
+                    </div>
+                    <p>Supports controlled immigration with an emphasis on integration and contribution to Dutch society and economy.</p>
+                  </div>
+                  
+                  <div class="policy-position">
+                    <h3>European Union</h3>
+                    <div class="position-meter">
+                      <div class="meter-container">
+                        <div class="meter-fill" style="width: 55%"></div>
+                      </div>
+                      <span>Moderate</span>
+                    </div>
+                    <p>Favors European cooperation but emphasizes the importance of national sovereignty on key issues.</p>
+                  </div>
+                </div>
+                
+                <div class="profile-section">
+                  <h2>Recent Activity</h2>
+                  <div class="activity-timeline">
+                    <div class="activity-item">
+                      <div class="activity-date">October 2, 2025</div>
+                      <div class="activity-content">
+                        <h3>Speech at EU Summit</h3>
+                        <p>Addressed European leaders on security cooperation and economic challenges facing the EU.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                      <div class="activity-date">September 28, 2025</div>
+                      <div class="activity-content">
+                        <h3>Proposed Budget Reforms</h3>
+                        <p>Introduced a package of fiscal reforms aimed at reducing government debt while maintaining essential services.</p>
+                      </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                      <div class="activity-date">September 15, 2025</div>
+                      <div class="activity-content">
+                        <h3>Meeting with NATO Secretary General</h3>
+                        <p>Discussed the Netherlands' commitment to NATO and regional security concerns.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        // Add event listener to the back button
+        const backButton = container.querySelector('.back-button');
+        if (backButton) {
+          backButton.addEventListener('click', () => {
+            // Go back to the politicians tab
+            loadTabContent('Politicians', location);
+          });
+        }
+      } else {
+        // For other politicians, show a "coming soon" message
+        container.innerHTML = `
+          <div class="politician-profile">
+            <div class="profile-header">
+              <button class="back-button">← Back to Politicians</button>
+              <h1>Profile Coming Soon</h1>
+            </div>
+            <div class="profile-content">
+              <p>Detailed profile for this politician is under development.</p>
+            </div>
+          </div>
+        `;
+        
+        // Add event listener to the back button
+        const backButton = container.querySelector('.back-button');
+        if (backButton) {
+          backButton.addEventListener('click', () => {
+            // Go back to the politicians tab
+            loadTabContent('Politicians', location);
+          });
+        }
+      }
+    } catch (error) {
+      logError(`Error loading politician profile: ${error.message}`);
+      container.innerHTML = `<div class="error-message">Error loading profile. Please try again.</div>`;
     }
   }
   

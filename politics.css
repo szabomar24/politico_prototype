@@ -816,6 +816,330 @@
   }
 }
 
+/* Politician Profile Page */
+.politician-profile {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.profile-header {
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 16px;
+}
+
+.profile-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 12px 0 8px 0;
+}
+
+.politician-role {
+  font-size: 18px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.back-button {
+  background-color: transparent;
+  border: none;
+  color: #3b82f6;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .profile-content {
+    flex-direction: row;
+  }
+}
+
+.profile-sidebar {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .profile-sidebar {
+    width: 300px;
+    flex-shrink: 0;
+  }
+}
+
+.profile-image-container {
+  margin-bottom: 24px;
+}
+
+.profile-image {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+  display: block;
+}
+
+.profile-stats {
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.profile-stats h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.profile-stat {
+  margin-bottom: 12px;
+}
+
+.profile-stat .stat-label {
+  display: block;
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.profile-stat .stat-value {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.follow-btn.large {
+  padding: 10px 16px;
+  font-size: 16px;
+}
+
+.compare-btn {
+  background-color: white;
+  color: #3b82f6;
+  border: 1px solid #3b82f6;
+  border-radius: 4px;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.compare-btn:hover {
+  background-color: #f0f9ff;
+}
+
+.profile-main {
+  flex-grow: 1;
+}
+
+.profile-section {
+  background-color: white;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.profile-section p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #4b5563;
+  margin-bottom: 16px;
+}
+
+.profile-section p:last-child {
+  margin-bottom: 0;
+}
+
+.policy-position {
+  margin-bottom: 24px;
+}
+
+.policy-position:last-child {
+  margin-bottom: 0;
+}
+
+.policy-position h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.position-meter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.position-meter .meter-container {
+  flex-grow: 1;
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  margin-right: 12px;
+  overflow: hidden;
+}
+
+.position-meter .meter-fill {
+  height: 100%;
+  background-color: #3b82f6;
+  border-radius: 4px;
+}
+
+.position-meter span {
+  font-size: 14px;
+  color: #6b7280;
+  width: 100px;
+  text-align: left;
+}
+
+.activity-timeline {
+  position: relative;
+}
+
+.activity-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 80px;
+  width: 2px;
+  background-color: #e5e7eb;
+}
+
+.activity-item {
+  position: relative;
+  padding-left: 100px;
+  margin-bottom: 24px;
+}
+
+.activity-item:last-child {
+  margin-bottom: 0;
+}
+
+.activity-date {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 80px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.activity-content {
+  position: relative;
+  padding-left: 20px;
+}
+
+.activity-content::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 8px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  border: 2px solid white;
+}
+
+.activity-content h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.activity-content p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Dark mode support for politician profile */
+@media (prefers-color-scheme: dark) {
+  .profile-stats,
+  .profile-section,
+  .compare-btn {
+    background-color: #1f2937;
+    border-color: #374151;
+  }
+  
+  .profile-header {
+    border-color: #374151;
+  }
+  
+  .profile-stats h3,
+  .profile-section h2 {
+    border-color: #374151;
+  }
+  
+  .activity-timeline::before {
+    background-color: #374151;
+  }
+  
+  .activity-content::before {
+    border-color: #1f2937;
+  }
+  
+  .back-button {
+    color: #60a5fa;
+  }
+  
+  .compare-btn {
+    color: #60a5fa;
+    border-color: #60a5fa;
+  }
+  
+  .compare-btn:hover {
+    background-color: #1e3a5f;
+  }
+  
+  .profile-section p,
+  .activity-content p {
+    color: #d1d5db;
+  }
+  
+  .profile-stat .stat-label,
+  .activity-date,
+  .position-meter span {
+    color: #9ca3af;
+  }
+}
+
 /* Loading indicator and error message */
 .loading-indicator {
   display: flex;
