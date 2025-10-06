@@ -1315,8 +1315,16 @@
               <p class="issue-subtitle">A comprehensive analysis of the housing shortage in the Netherlands</p>
             </div>
             
-            <div class="issue-hero-image">
-              <img src="${coverImage}" alt="Housing Crisis in the Netherlands">
+            <div class="issue-detail-section">
+              <div class="video-header">
+                <h2>Video Summary</h2>
+                <img src="${getExtensionResourceUrl('media/icons8-ai-48.png')}" alt="AI Generated" class="ai-icon">
+              </div>
+              <div class="video-container">
+                <div class="video-placeholder" style="background-image: url('${coverImage}'); background-size: cover; background-position: center;">
+                  <img src="${getExtensionResourceUrl('media/icons8-play-30.png')}" alt="Play" class="play-button">
+                </div>
+              </div>
             </div>
             
             <div class="issue-detail-content">
@@ -1406,7 +1414,7 @@
                 </div>
                 <div class="timeline">
                   <div class="timeline-item">
-                    <div class="timeline-date">September 2025</div>
+                    <div class="timeline-date">Sept 2025</div>
                     <div class="timeline-content">
                       <h3>National Housing Accord</h3>
                       <p>The government announced a new National Housing Accord aimed at building 900,000 new homes by 2030, with specific targets for affordable and social housing units.</p>
@@ -1471,6 +1479,15 @@
           backButton.addEventListener('click', () => {
             // Go back to the issues tab
             loadTabContent('Issues', location);
+          });
+        }
+        
+        // Add event listener to the video placeholder
+        const videoPlaceholder = container.querySelector('.video-placeholder');
+        if (videoPlaceholder) {
+          videoPlaceholder.addEventListener('click', () => {
+            // For the prototype, just show an alert
+            alert('Video playback would start here in the full implementation.');
           });
         }
       } else {
