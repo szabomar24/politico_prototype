@@ -823,15 +823,25 @@
 
 .coverage-meter.large {
   margin-bottom: 12px;
-  position: relative;
 }
 
-.coverage-meter.large span {
+/* Media analysis card styles */
+.media-analysis-card.full-width .coverage-meter {
+  margin-bottom: 16px;
+}
+
+.media-analysis-card.full-width .coverage-meter span {
   display: block;
-  margin-top: 8px;
+  text-align: right;
+  margin-top: 4px;
   font-size: 14px;
   color: #6b7280;
-  text-align: right;
+}
+
+.coverage-label {
+  font-size: 14px;
+  color: #6b7280;
+  white-space: nowrap;
 }
 
 .meter-labels {
@@ -1797,6 +1807,10 @@
     box-shadow: 1px 3px 5px rgba(255, 255, 255, 0.05);
   }
   
+  .media-analysis-card.full-width .coverage-meter span {
+    color: #9ca3af;
+  }
+  
   .chart-bar {
     background-color: #60a5fa;
   }
@@ -1811,7 +1825,8 @@
   
   .meter-percentages,
   .chart-labels,
-  .source-stats {
+  .source-stats,
+  .coverage-label {
     color: #9ca3af;
   }
   

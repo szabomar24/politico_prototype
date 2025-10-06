@@ -1443,7 +1443,7 @@
                 <div class="coverage-analysis">
                   <div class="media-analysis-card full-width">
                     <h3>Political Leaning of Coverage</h3>
-                    <div class="coverage-meter large">
+                    <div class="coverage-meter">
                       <div class="meter-container">
                         <div class="meter-left" style="width: 30%"></div>
                         <div class="meter-center" style="width: 30%"></div>
