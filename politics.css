@@ -736,12 +736,15 @@
   overflow-y: auto;
   background-color: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
 }
 
 .message {
   margin-bottom: 12px;
   max-width: 80%;
   word-wrap: break-word;
+  display: flex;
 }
 
 .message.bot {
@@ -761,7 +764,8 @@
 
 .message.user {
   align-self: flex-end;
-  margin-left: auto;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .message.user p {
@@ -773,6 +777,7 @@
   display: inline-block;
   border: 1px solid rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(5px);
+  margin-left: auto;
 }
 
 .chatbot-input {
