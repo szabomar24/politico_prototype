@@ -1,4 +1,4 @@
-````markdown
+
 # How to Set Up a New Computer to Clone a GitHub Repository  
 _Applies to factory installations of macOS, Windows, and Linux._
 
@@ -12,7 +12,7 @@ The **only** tool you need to clone a GitHub repo is **Git**. Below is exactly h
 Option A – using the built-in prompt:
 ```bash
 git --version
-````
+```
 
 * A dialog will appear asking to install **Command Line Tools**.
 * Accept and complete the installation.
