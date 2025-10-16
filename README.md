@@ -10,7 +10,7 @@ The application is not very responsive. View on desktop for the best results. Al
 
 ## Usage Guide
 
-1. Clone this repository
+1. Clone this repository (see [GUIDE.md](GUIDE.md))
 2. Open Google Chrome
 3. Go to Extensions -> Manage Extensions
 4. Select "Load Unpacked" and select the repository folder
