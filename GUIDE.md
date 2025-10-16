@@ -1,12 +1,16 @@
 
 # How to Set Up a New Computer to Clone a GitHub Repository  
-_Applies to factory installations of macOS, Windows, and Linux._
 
 The **only** tool you need to clone a GitHub repo is **Git**. Below is exactly how to install it on each operating system and clone a repository.
 
+## How to get the repo-url:
+1. Navigate to the repository: https://github.com/szabomar24/politico_prototype
+2. Click the green “Code” button
+3. In “Local” select “HTTPS”, copy the URL
+
 ---
 
-## ✅ macOS
+## macOS
 
 ### 1. Install Git  
 Option A – using the built-in prompt:
@@ -21,6 +25,10 @@ Option B – using Homebrew:
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Then run:
+```bash
 brew install git
 ```
 
@@ -30,9 +38,11 @@ brew install git
 git clone <repo-url>
 ```
 
+**Tip:** Don't include the <> in the command, just the URL.
+
 ---
 
-## ✅ Windows
+## Windows
 
 ### 1. Install Git for Windows
 
@@ -50,9 +60,11 @@ In **Git Bash** or **Command Prompt**:
 git clone <repo-url>
 ```
 
+**Tip:** Don't include the <> in the command, just the URL.
+
 ---
 
-## ✅ Linux
+## Linux
 
 ### 1. Install Git using your package manager
 
@@ -81,17 +93,8 @@ sudo pacman -S git
 git clone <repo-url>
 ```
 
+**Tip:** Don't include the <> in the command, just the URL.
+
 ---
 
-## ✅ Quick Reference
-
-| OS      | What to Install | How to Install                                | Clone Command          |
-| ------- | --------------- | --------------------------------------------- | ---------------------- |
-| macOS   | Git             | `git --version` → install prompt, or Homebrew | `git clone <repo-url>` |
-| Windows | Git for Windows | Download installer from git-scm.com           | `git clone <repo-url>` |
-| Linux   | Git             | Package manager (`apt`, `dnf`, `pacman`)      | `git clone <repo-url>` |
-
 No GitHub account, SSH keys, or extra tools are needed unless authentication is required.
-
-```
-```
