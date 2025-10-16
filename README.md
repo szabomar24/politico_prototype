@@ -13,10 +13,12 @@ The application is not very responsive. View on desktop for the best results. Al
 1. Clone this repository (see [GUIDE.md](GUIDE.md))
 2. Open Google Chrome
 3. Go to Extensions -> Manage Extensions
-4. Select "Load Unpacked" and select the repository folder
-5. Turn on the extension (if not already on)
-6. Go to ground.news, you should see "Politics" next to "Blindspot" in the navbar.
-7. Feel free to explore from there.
+4. Turn on Developer mode (top-right)
+5. Select "Load Unpacked" (top-left) and select the repository folder
+6. The new extension titled “GroundNews Prototype Overlay” should appear under “All extensions”, make sure it is turned on (should turn on by default)
+7. Go to ground.news, you should see "Politics" next to "Blindspot" in the navbar. If not, refresh the page.
+8. For the best experience, test the prototype on a desktop screen and set the theme to dark
+9. Feel free to explore from there.
 
 **Important notices:**
 - All data, statistics, and political information presented are fictional and created for demonstration purposes
